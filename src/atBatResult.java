@@ -1,0 +1,5 @@
+
+public enum atBatResult
+{
+	STRIKEOUT, SINGLE, WALK, DOUBLE, TRIPLE, HOME_RUN, OUT, SACRIFICE, ERROR;
+}
