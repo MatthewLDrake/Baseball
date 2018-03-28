@@ -38,10 +38,13 @@ public class BallInPlay
 			break;
 		case FLYBALL:
 			flyball(false);
+			break;
 		case STRONG_FLYBALL:
 			flyball(true);
+			break;
 		case GROUNDBALL:
 			groundball(false);
+			break;
 		case STRONG_GROUNDBALL:
 			groundball(true);
 			break;
@@ -264,6 +267,15 @@ public class BallInPlay
 					{
 						outs++;
 						result = atBatResult.OUT;
+						if(outs != 3)
+						{
+						    secondBase = null;
+						    if(thirdBase != null)runsScored++;
+						    if(firstBase != null)secondBase = firstBase;
+						    firstBase = currentBatter;
+						    
+						    
+						}
 					}
 					else
 					{
