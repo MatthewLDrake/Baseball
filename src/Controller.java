@@ -44,7 +44,9 @@ public class Controller
 				((ProfessionalTeam) majorLeagueTeam).addFarmSystemTeam((MinorLeagueTeam)minorLeagueTeam);
 			}
 			
-			new draft(100, create.getMajors(), null);
+			PlayerGenerator gen = new PlayerGenerator();
+					
+			new draft(100, create.getMajors(), gen.getPlayers(), true);
 			
 			create.getTeam(0,0).addPlayer(new adultPitcher());
 			create.getTeam(1, 0).addPlayer(new adultPitcher());

@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
+import java.util.TreeMap;
 
 public class Tester
 {
@@ -11,29 +14,31 @@ public class Tester
 			teamOne.addPlayer(new adultPlayer(i));
 			teamTwo.addPlayer(new adultPlayer(i));
 		}
-		
+
 		teamOne.addPlayer(new adultPitcher());
 		teamTwo.addPlayer(new adultPitcher());
-		
+
 		currentTeam batting = new currentTeam(teamOne);
 		currentTeam fielding = new currentTeam(teamTwo);
 		int outs = 0, hits = 0, errors = 0;
-		
-		
-		
+
+
+		TreeMap<Integer, Integer> values = new TreeMap<Integer, Integer>();
+		NameGenerator gen = new NameGenerator();
 		for(int i = 0; i < 1000; i++)
 		{
-			player t = batting.getNext();
-			
-			if(t == null)
-			{
-				System.err.println("fuck 1");
-				System.exit(1);
-			}
-			
+			Random r = new Random();
+			System.out.println(gen.generateName(Gender.MALE).toString());
+			int num = (int)Math.max(Math.min(5, Math.round(r.nextGaussian()+3)),1);
+
+			if(values.containsKey(num))
+				values.put(num, values.get(num) + 1);
+			else
+				values.put(num, 1);
+
 			BallInPlay test = new BallInPlay(pitchResult.POPUP, batting.getNext(), null, null, null, fielding, 0);
 			atBatResult temp = test.result;
-			
+
 			if(temp == atBatResult.OUT)
 			{
 				outs++;
@@ -43,10 +48,19 @@ public class Tester
 				errors++;
 			}
 			else hits++;
-			
+
 		}
+		for (Integer name: values.keySet()){
+
+			String key =name.toString();
+			String value = values.get(name).toString();  
+			System.out.println(key + " " + value);  
+
+
+		} 
+
 		System.out.printf("hits: %d outs: %d errors: %d\n", hits, outs, errors);
-		
-		
+
+
 	}
 }

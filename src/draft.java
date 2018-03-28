@@ -3,12 +3,20 @@ import java.util.ArrayList;
 public class draft
 {
 	private int totalRounds;
-	private ArrayList<team> teams;
 	private ArrayList<player> rookies;
-	public draft(int rounds, ArrayList<team> teams, ArrayList<player> players)
+	private boolean firstDraft;
+	private ArrayList<rookieHolder> teams;
+	public draft(int rounds, ArrayList<team> teams, ArrayList<player> players, boolean firstDraft)
 	{
 		totalRounds = rounds;
-		this.teams = teams;
+		for(int i = 0; i < teams.size(); i++)
+		{
+			this.teams.add(new rookieHolder(teams.get(i)));
+		}
+		rookies = players;
+		
+		this.firstDraft = firstDraft;
+		
 		executeDraft();
 		
 	}

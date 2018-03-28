@@ -26,5 +26,8 @@ public interface player extends Comparable<player>
 
 	public int getPosition();
 	public ArrayList<Integer> getSecondaryPositions();
-	public int getOverall();
+	public int getOverall(int pos);
+	public void setPositionToOrderBy(int pos);
+	public double getStaminaRating();
+	public double getStaminaRemaining();
 }
