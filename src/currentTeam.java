@@ -20,7 +20,7 @@ public class currentTeam
 		leftFielder = team.getStartingLeftFielder();
 		centerFielder = team.getStartingCenterFielder();
 		rightFielder = team.getStartingRightFielder();
-		pitcher = team.getStartingPitcher();
+		pitcher = team.getNextStarter();
 	}
 	public player getCatcher()
 	{

@@ -46,16 +46,7 @@ public class Controller
 			
 			PlayerGenerator gen = new PlayerGenerator();
 					
-			new draft(100, create.getMajors(), gen.getPlayers(), true);
-			
-			create.getTeam(0,0).addPlayer(new adultPitcher());
-			create.getTeam(1, 0).addPlayer(new adultPitcher());
-			for(int i = 1; i < 9; i++)
-			{
-				create.getTeam(0, 0).addPlayer(new adultPlayer(i));
-				create.getTeam(1, 0).addPlayer(new adultPlayer(i));
-			}
-			
+			new draft(100, create.getMajors(), gen.getPlayers(), true);			
 			
 			executeGame(false, 0,1,0);
 			

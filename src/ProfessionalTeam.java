@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 public class ProfessionalTeam implements team
 {
 	private ArrayList<player> players;
@@ -13,15 +14,19 @@ public class ProfessionalTeam implements team
 	private player[] battingOrder;
 	private int placeInRotation;
 	private player startingCatcher, startingFirstBase, startingSecondBase, startingThirdBase, startingShortStop, startingLeftFielder, startingRightFielder, startingCenterFielder;
+	private pitcher spotStarter, closer, setup, reliever;
+	private pitcher[] middleRelievers;
+	private Random r;
 	public ProfessionalTeam(String teamName, int teamNum)
 	{
 		players = new ArrayList<player>();
 		this.teamName = teamName;
-
+		r = new Random();
 		this.teamNum = teamNum;
 		hasDH = this.teamNum > 16;
 		farmSystem = new MinorLeagueTeam[3];
 		pitchingRotation = new pitcher[5];
+		middleRelievers = new pitcher[3];
 		battingOrder = new player[9];
 		placeInRotation = 0;
 	}
@@ -40,14 +45,6 @@ public class ProfessionalTeam implements team
 	{
 		players.add(player);
 
-
-
-		if(player.getPosition() == 0)
-		{
-			pitchingRotation[0] = (pitcher) player;
-			battingOrder[8] = player;
-			return;
-		}
 		switch (player.getPosition())
 		{
 		case 1:
@@ -93,9 +90,9 @@ public class ProfessionalTeam implements team
 			else trySecondaryPositions(player);
 			break;
 		case 7:
-			if(startingFirstBase == null || player.compareTo(startingFirstBase) > 0)
+			if(startingCenterFielder == null || player.compareTo(startingCenterFielder) > 0)
 			{
-				startingFirstBase = player;
+				startingCenterFielder = player;
 			}
 			else trySecondaryPositions(player);
 			break;
@@ -212,10 +209,7 @@ public class ProfessionalTeam implements team
 	{
 		return battingOrder;
 	}
-	public pitcher getStartingPitcher()
-	{
-		return pitchingRotation[placeInRotation++];
-	}
+
 	@Override
 	public player getStartingFirstBase()
 	{
@@ -254,5 +248,70 @@ public class ProfessionalTeam implements team
 	public player getStartingCatcher()
 	{
 		return startingCatcher;
+	}
+	@Override
+	public void addStartingPitcher(pitcher pitcher)
+	{
+		players.add((player)pitcher);
+		for(int i = 0; i < pitchingRotation.length; i++)
+		{
+			if(pitchingRotation[i] == null)
+			{
+				pitchingRotation[i] = pitcher;
+				return;
+			}
+		}
+		System.out.println(((player)pitcher).toString());
+		spotStarter = pitcher;
+		
+	}
+	public void addReliefPitcher(pitcher pitcher)
+	{
+		players.add((player) pitcher);
+		if(closer == null)
+		{
+			closer = pitcher;
+		}
+		else if(setup == null)
+		{
+			setup = pitcher;
+		}
+		else
+		{
+			for(int i = 0; i < middleRelievers.length; i++)
+			{
+				if(middleRelievers[i] == null)
+				{
+					middleRelievers[i] = pitcher;
+					return;
+				}
+			}
+			reliever = pitcher;
+		}
+	}
+	public MinorLeagueTeam getTripleATeam()
+	{
+		return farmSystem[0];
+		
+	}
+	public MinorLeagueTeam getDoubleATeam()
+	{
+		return farmSystem[1];
+		
+	}
+	public MinorLeagueTeam getSingleATeam()
+	{
+		return farmSystem[2];
+		
+	}
+	public pitcher getNextStarter()
+	{
+		pitcher retVal = null;
+		// check if struggling
+		if(placeInRotation == 4 && r.nextInt(10) < 3)retVal = spotStarter;
+		else retVal = pitchingRotation[placeInRotation];
+		placeInRotation = (placeInRotation+1)%5;
+		
+		return retVal;
 	}
 }

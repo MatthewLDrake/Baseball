@@ -37,4 +37,11 @@ public class adultPitcher extends adultPlayer implements pitcher
 	{
 		return pitches.get(selectedPitch);
 	}
+	@Override
+	public double getPitchOverall(pitchType pitch)
+	{
+		pitcherPitchRatings temp = getPitchRatings(pitch);
+		
+		return (temp.getControl() + temp.getMovement())/2;
+	}
 }

@@ -29,7 +29,7 @@ public class Tester
 		{
 			Random r = new Random();
 			System.out.println(gen.generateName(Gender.MALE).toString());
-			int num = (int)Math.max(Math.min(5, Math.round(r.nextGaussian()+3)),1);
+			int num = (int)Math.round(Math.max(5, r.nextGaussian()*10 + 25));
 
 			if(values.containsKey(num))
 				values.put(num, values.get(num) + 1);

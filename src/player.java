@@ -30,4 +30,10 @@ public interface player extends Comparable<player>
 	public void setPositionToOrderBy(int pos);
 	public double getStaminaRating();
 	public double getStaminaRemaining();
+
+	public String printRatings();
+
+	public String getPositionAsString();
+	public int getIntendedLeague();
+	public void setIntendedLeague(int i);
 }

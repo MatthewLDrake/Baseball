@@ -19,7 +19,6 @@ public interface team
 	public void addRuns(int i);
 	public void addRunsAgainst(int i);
 	public player[] getBattingOrder();
-	public pitcher getStartingPitcher();
 	public player getStartingFirstBase();
 	public player getStartingSecondBase();
 	public player getStartingThirdBase();
@@ -28,6 +27,8 @@ public interface team
 	public player getStartingCenterFielder();
 	public player getStartingRightFielder();
 	public player getStartingCatcher();
-	
+	public void addStartingPitcher(pitcher pitcher);
+	public void addReliefPitcher(pitcher pitcher);
+	public pitcher getNextStarter();
 	
 }

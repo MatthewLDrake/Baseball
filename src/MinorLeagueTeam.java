@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+import java.util.Random;
 public class MinorLeagueTeam implements team
 {
 	private ArrayList<player> players;
@@ -9,11 +9,21 @@ public class MinorLeagueTeam implements team
 	private int wins, divisionWins, conferenceWins;
 	private int losses, divisionLosses, conferenceLosses;
 	private int runs, runsAgainst;
+	private pitcher[] pitchingRotation;
+	private pitcher spotStarter, closer, setup, reliever;
+	private pitcher[] middleRelievers;
+	private int placeInRotation;
+	private Random r;
 	public MinorLeagueTeam(ProfessionalTeam affiliate, String teamName, boolean hasDH)
 	{
+		placeInRotation = 0;
+		r = new Random();
+		pitchingRotation = new pitcher[5];
+		middleRelievers = new pitcher[3];
 		this.hasDH = hasDH;
 		this.teamName = teamName;
 		majorAffiliate = affiliate;
+		players = new ArrayList<player>();
 	}
 
 	@Override
@@ -119,10 +129,7 @@ public class MinorLeagueTeam implements team
 		// TODO Auto-generated method stub
 		return null;
 	}
-	public pitcher getStartingPitcher()
-	{
-		return null;
-	}
+
 
 	@Override
 	public player getStartingFirstBase()
@@ -176,5 +183,53 @@ public class MinorLeagueTeam implements team
 	public player getStartingCatcher()
 	{
 		return null;
+	}
+	public void addStartingPitcher(pitcher pitcher)
+	{
+		players.add((player) pitcher);
+		for(int i = 0; i < pitchingRotation.length; i++)
+		{
+			if(pitchingRotation[i] == null)
+			{
+				pitchingRotation[i] = pitcher;
+				return;
+			}
+		}
+		spotStarter = pitcher;
+		
+	}
+	public void addReliefPitcher(pitcher pitcher)
+	{
+		players.add((player) pitcher);
+		if(closer == null)
+		{
+			closer = pitcher;
+		}
+		else if(setup == null)
+		{
+			setup = pitcher;
+		}
+		else
+		{
+			for(int i = 0; i < middleRelievers.length; i++)
+			{
+				if(middleRelievers[i] == null)
+				{
+					middleRelievers[i] = pitcher;
+					return;
+				}
+			}
+			reliever = pitcher;
+		}
+	}
+	public pitcher getNextStarter()
+	{
+		pitcher retVal = null;
+		// check if struggling
+		if(placeInRotation == 4 && r.nextInt(10) < 3)retVal = spotStarter;
+		else retVal = pitchingRotation[placeInRotation];
+		placeInRotation = (placeInRotation+1)%5;
+		
+		return retVal;
 	}
 }

@@ -9,8 +9,15 @@ public class batterPitchRatings
 		this.goodSwingRating = goodSwingRating;
 		this.badTakeRating = badTakeRating;
 		this.contactValue = contactValue;
+		this.powerRating = powerValue;
+		this.groundballPercent = groundballPercent;
+				
 		atBats = 0;
 		hits = 0;
+	}
+	public String toString()
+	{
+		return goodSwingRating + " " + badTakeRating + " " + contactValue + " " + powerRating + " " + groundballPercent;
 	}
 	public double getGroundballPercent()
 	{

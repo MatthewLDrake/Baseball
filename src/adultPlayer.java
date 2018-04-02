@@ -23,9 +23,9 @@ public class adultPlayer implements player
 		ratings[2] = throwPower;
 		ratings[3] = throwAccuracy;
 		ratings[4] = staminaRating;
-				
+
 		staminaRemaining = 100;
-		
+
 		stats = new int[8];
 		for(int i = 0; i < stats.length; i ++)
 		{
@@ -38,6 +38,28 @@ public class adultPlayer implements player
 	public String toString()
 	{
 		return name;
+	}
+	private int intendedLeague;
+	public void setIntendedLeague(int i)
+	{
+		intendedLeague = i;
+	}
+	public int getIntendedLeague()
+	{
+		return intendedLeague;
+	}
+	public String printRatings()
+	{
+		String str = "";
+		for(int i =0; i < ratings.length; i++)
+		{
+			str += ratings[i] + " ";
+		}
+		for(pitchType rating : pitchType.values())
+		{
+			str += " " + rating.toString() + " " + pitchStats.get(rating).toString();
+		}
+		return str;
 	}
 	// random constructor, for testing
 	public adultPlayer(int pos)
@@ -55,7 +77,7 @@ public class adultPlayer implements player
 		ratings[2] = 50;
 		ratings[3] = 50;
 		ratings[4] = 50;
-		
+
 		staminaRemaining = 100;
 		this.pos = pos;
 		secondaryPositions = new ArrayList<Integer>();
@@ -84,7 +106,7 @@ public class adultPlayer implements player
 	@Override
 	public double getBattingAverageVs(pitchType key)
 	{
-		
+
 		return pitchStats.get(key).getAverage();
 	}
 	public batterPitchRatings getBatterRatingsVs(pitchType selectedPitch)
@@ -221,7 +243,235 @@ public class adultPlayer implements player
 	// TODO: Fix this
 	public int getOverall(int position)
 	{
+		overall = 0;
+		if(position == -1)
+		{
+			for(int i = 0; i < 11; i++)
+			{
+				overall = Math.max(overall, getOverall(i));
+			}
+		}
+		else
+		{
+			double averageContactRating = 0;
+			double averagePowerRating = 0;
+			double averageSwingRating = 0;
+			double averageTakeRating = 0;
+			int count = 0;
+			for(pitchType type : pitchType.values())
+			{
+				averageContactRating += pitchStats.get(type).getContactValue();
+				averagePowerRating += pitchStats.get(type).getPowerRating();
+				averageSwingRating += pitchStats.get(type).getGoodSwingRating();
+				averageTakeRating += pitchStats.get(type).getBadTakeRating();
+				count++;
+				
+			}
+			averageContactRating = averageContactRating/count;
+			averagePowerRating = averagePowerRating/count;
+			averageSwingRating = averageSwingRating/count;
+			averageTakeRating = averageTakeRating/count;
+			
+			double contactModifier = 0, powerModifier = 0, swingModifier = 0, takeModifier = 0, fieldingModifier = 0, throwPowerModifier = 0, throwAccuracyModifier = 0, staminaModifier = 0, speedModifier = 0;
+			double positionModifier = .75;
+			
+			if(position == pos)
+			{
+				positionModifier = 1;
+			}
+			else if(secondaryPositions != null)
+			{
+				for(int i = 0; i < secondaryPositions.size(); i++)
+				{
+					if(position == secondaryPositions.get(i))
+					{
+						positionModifier = .95;
+					}
+				}
+			}
+			
+			switch(position)
+			{
+			// First base
+			case 1:
+				contactModifier = .25; 
+				powerModifier = .15;
+				swingModifier = .05; 
+				takeModifier = .05; 
+				fieldingModifier = .3;
+				throwPowerModifier = .025;
+				throwAccuracyModifier = .025;
+				staminaModifier = .15;
+				speedModifier = .025;				
+					break;
+			// Second Base
+			case 2:
+				contactModifier = .2; 
+				powerModifier = .1;
+				swingModifier = .05; 
+				takeModifier = .05; 
+				fieldingModifier = .3;
+				throwPowerModifier = .05;
+				throwAccuracyModifier = .2;
+				staminaModifier = .15;
+				speedModifier = .025;	
+				break;
+			// Third Base
+			case 3:
+				contactModifier = .25; 
+				powerModifier = .15;
+				swingModifier = .05; 
+				takeModifier = .05; 
+				fieldingModifier = .25;
+				throwPowerModifier = .15;
+				throwAccuracyModifier = .15;
+				staminaModifier = .15;
+				speedModifier = .025;	
+				break;
+			// Short Stop
+			case 4:
+				contactModifier = .25; 
+				powerModifier = .15;
+				swingModifier = .05; 
+				takeModifier = .05; 
+				fieldingModifier = .25;
+				throwPowerModifier = .125;
+				throwAccuracyModifier = .175;
+				staminaModifier = .15;
+				speedModifier = .025;	
+				break;
+			// Left Field
+			case 5:
+				contactModifier = .225; 
+				powerModifier = .175;
+				swingModifier = .05; 
+				takeModifier = .05; 
+				fieldingModifier = .2;
+				throwPowerModifier = .2;
+				throwAccuracyModifier = .15;
+				staminaModifier = .15;
+				speedModifier = .025;	
+				break;
+			// Right Field
+			case 6:
+				contactModifier = .25; 
+				powerModifier = .2;
+				swingModifier = .075; 
+				takeModifier = .075; 
+				fieldingModifier = .1;
+				throwPowerModifier = .2;
+				throwAccuracyModifier = .15;
+				staminaModifier = .15;
+				speedModifier = .025;	
+				break;
+			// Center Field
+			case 7:
+				contactModifier = .25; 
+				powerModifier = .15;
+				swingModifier = .05; 
+				takeModifier = .05; 
+				fieldingModifier = .2;
+				throwPowerModifier = .175;
+				throwAccuracyModifier = .15;
+				staminaModifier = .15;
+				speedModifier = .05;	
+				break;
+			// Catcher
+			case 8:
+				contactModifier = .25; 
+				powerModifier = .15;
+				swingModifier = .05; 
+				takeModifier = .05; 
+				fieldingModifier = .1;
+				throwPowerModifier = .225;
+				throwAccuracyModifier = .225;
+				staminaModifier = .15;
+				speedModifier = .025;	
+				break;
+			// Starting Pitcher
+			case 9:
+				if(!(this instanceof pitcher))return 0;
+				contactModifier = .025; 
+				powerModifier = .025;
+				swingModifier = .025; 
+				takeModifier = .025; 
+				fieldingModifier = .05;
+				throwPowerModifier = .075;
+				throwAccuracyModifier = .075;
+				staminaModifier = .1;
+				speedModifier = .025;	
+				// .8 for pitching
+				pitcher startingPitcher = (pitcher) this;
+				double pitchRatings = 0;
+				
+				HashMap<pitchType, pitcherPitchRatings> pitches = startingPitcher.getPitches();
+				
+				count = 0;
+				for(pitchType pitch : pitches.keySet())
+				{
+					pitchRatings += startingPitcher.getPitchOverall(pitch);
+					count++;
+				}
+				
+				overall = startingPitcher.getStaminaRating() * .3 + pitchRatings * .5;
+				break;
+			// Relief Pitcher
+			case 10:
+				if(!(this instanceof pitcher))return 0;
+
+				fieldingModifier = .05;
+				throwPowerModifier = .075;
+				throwAccuracyModifier = .075;
+				staminaModifier = .1;
+				speedModifier = .025;	
+				// .9 for pitching
+				pitcher relief = (pitcher) this;
+				double reliefPitchRatings = 0;
+				
+				HashMap<pitchType, pitcherPitchRatings> reliefPitches = relief.getPitches();
+				
+				count = 0;
+				for(pitchType pitch : reliefPitches.keySet())
+				{
+					reliefPitchRatings += relief.getPitchOverall(pitch);
+					count++;
+				}
+				reliefPitchRatings = reliefPitchRatings/count;
+				
+				overall = relief.getStaminaRating() * .2 + reliefPitchRatings * .7;
+			}
+			overall += ratings[0] * speedModifier + ratings[1] * fieldingModifier + ratings[2] * throwPowerModifier + ratings[3] * throwAccuracyModifier + ratings[4] * staminaModifier + averageContactRating * contactModifier + averagePowerRating * powerModifier + takeModifier * averageTakeRating + swingModifier * averageSwingRating;
+			overall = overall*positionModifier;
+		}
 		return (int) Math.round(overall);
+	}
+	public String getPositionAsString()
+	{
+		switch(pos)
+		{
+		case 1:
+			return "1B";
+		case 2:
+			return "2B";
+		case 3:
+			return "3B";
+		case 4:
+			return "SS";
+		case 5:
+			return "LF";
+		case 6:
+			return "RF";
+		case 7:
+			return "CF";
+		case 8:
+			return "C";
+		case 9:
+			return "SP";
+		case 10:
+			return "RP";
+			
+		}
+		return "";
 	}
 	public void setPositionToOrderBy(int pos)
 	{
@@ -231,6 +481,6 @@ public class adultPlayer implements player
 	@Override
 	public int compareTo(player o)
 	{
-		return this.getOverall(posToSortBy) - o.getOverall(posToSortBy);
+		return o.getOverall(posToSortBy) - this.getOverall(posToSortBy);
 	}
 }
