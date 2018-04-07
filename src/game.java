@@ -137,7 +137,7 @@ public class game
 	}
 	private void contactMade(pitchResult pitch, currentTeam fieldingTeam, pitchType lastPitch)
 	{
-		BallInPlay play = new BallInPlay(pitch, currentBatter, firstBase, secondBase, thirdBase, fieldingTeam, outs);
+		BallInPlay play = new BallInPlay(pitch, currentBatter, firstBase, secondBase, thirdBase, fieldingTeam, outs, lastPitch);
 		
 		firstBase = play.firstBase;
 		secondBase = play.secondBase;

@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
-import java.util.TreeMap;
 
 public class Tester
 {
@@ -23,20 +20,22 @@ public class Tester
 		int outs = 0, hits = 0, errors = 0;
 
 
-		TreeMap<Integer, Integer> values = new TreeMap<Integer, Integer>();
-		NameGenerator gen = new NameGenerator();
 		for(int i = 0; i < 1000; i++)
 		{
 			Random r = new Random();
-			System.out.println(gen.generateName(Gender.MALE).toString());
-			int num = (int)Math.round(Math.max(5, r.nextGaussian()*10 + 25));
 
-			if(values.containsKey(num))
-				values.put(num, values.get(num) + 1);
-			else
-				values.put(num, 1);
+			double timeToMeetingPoint = Math.abs(r.nextGaussian() * 2)+2;
+			double distanceToBall = Math.abs(r.nextGaussian() * 10);
 
-			BallInPlay test = new BallInPlay(pitchResult.POPUP, batting.getNext(), null, null, null, fielding, 0);
+			double speed = 50;
+
+			double timeLeft = timeToMeetingPoint - findTime(speed, distanceToBall);
+
+			//System.out.println(timeToMeetingPoint + " " + distanceToBall + " " + timeLeft + " " + findTime(50, 90));
+
+			System.out.println(Math.abs(r.nextGaussian() * 2)+4.5);
+
+			BallInPlay test = new BallInPlay(pitchResult.FLYBALL, batting.getNext(), null, null, null, fielding, 0, pitchType.FOUR_SEAM_FASTBALL);
 			atBatResult temp = test.result;
 
 			if(temp == atBatResult.OUT)
@@ -50,17 +49,17 @@ public class Tester
 			else hits++;
 
 		}
-		for (Integer name: values.keySet()){
 
-			String key =name.toString();
-			String value = values.get(name).toString();  
-			System.out.println(key + " " + value);  
-
-
-		} 
 
 		System.out.printf("hits: %d outs: %d errors: %d\n", hits, outs, errors);
 
 
+	}
+	private static double findTime(double speed, double distanceToBall)
+	{
+		Random r = new Random();
+		double feetPerSecond = (3/50) * speed + 24 + r.nextDouble()-.5;
+		double result = distanceToBall / feetPerSecond;
+		return result;
 	}
 }

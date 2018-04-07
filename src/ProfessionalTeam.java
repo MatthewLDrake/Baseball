@@ -85,7 +85,7 @@ public class ProfessionalTeam implements team
 		case 6:
 			if(startingRightFielder == null || player.compareTo(startingFirstBase) > 0)
 			{
-				startingFirstBase = player;
+				startingRightFielder = player;
 			}
 			else trySecondaryPositions(player);
 			break;
