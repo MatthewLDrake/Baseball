@@ -389,7 +389,7 @@ public class rookieHolder
 				team.addStartingPitcher((pitcher) startingPitchers.get(i));
 				team.addReliefPitcher((pitcher) reliefPitchers.get(i));
 			}
-			ProfessionalTeam temp = (ProfessionalTeam) team;
+			MajorLeagueTeam temp = (MajorLeagueTeam) team;
 			MinorLeagueTeam tripleA = temp.getTripleATeam();
 			for(int i = 6; i < 12; i++)
 			{

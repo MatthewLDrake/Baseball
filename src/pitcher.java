@@ -9,4 +9,6 @@ public interface pitcher
 	public double getStaminaRemaining();
 
 	public double getPitchOverall(pitchType pitch);
+	
+	
 }

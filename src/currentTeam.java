@@ -5,8 +5,10 @@ public class currentTeam
 	private ArrayList<player> battingOrder;
 	private pitcher pitcher;
 	private player catcher, firstBase, secondBase, thirdBase, shortStop, leftFielder, rightFielder, centerFielder;
+	public String teamName;
 	public currentTeam(team team)
 	{
+		teamName = team.toString();
 		battingOrder = new ArrayList<player>();
 		for(int i = 0; i < team.getBattingOrder().length;i++)
 		{
@@ -21,6 +23,10 @@ public class currentTeam
 		centerFielder = team.getStartingCenterFielder();
 		rightFielder = team.getStartingRightFielder();
 		pitcher = team.getNextStarter();
+	}
+	public String toString()
+	{
+		return teamName;
 	}
 	public player getCatcher()
 	{
@@ -82,6 +88,11 @@ public class currentTeam
 	public pitcher getPitcher()
 	{
 		return pitcher;
+	}
+	public void setStartingPitcher(pitcher adultPitcher)
+	{
+		this.pitcher = adultPitcher;
+		
 	}
 	
 }

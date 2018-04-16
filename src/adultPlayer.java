@@ -481,6 +481,30 @@ public class adultPlayer implements player
 	@Override
 	public int compareTo(player o)
 	{
-		return o.getOverall(posToSortBy) - this.getOverall(posToSortBy);
+		if(o.getOverall(posToSortBy) != this.getOverall(posToSortBy))
+			return o.getOverall(posToSortBy) - this.getOverall(posToSortBy);
+		else
+		{
+			double temp = o.getRecentOverall();
+			if(temp - this.overall > 0)return 1;
+			else if(temp - this.overall < 0)return -1;
+			else return 0;
+		}
+	}
+	@Override
+	public boolean advance(int currentBase)
+	{
+		double speed = getSpeedRating();
+		if(speed > 55 && currentBase == 3)return true;
+		if(speed > 70 && currentBase == 2)return true;
+		return false;
+	}
+	public void setSpeed(double b)
+	{
+		ratings[0] = b;
+	}
+	public double getRecentOverall()
+	{
+		return overall;
 	}
 }

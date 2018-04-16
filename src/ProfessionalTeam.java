@@ -5,7 +5,7 @@ public class ProfessionalTeam implements team
 	private ArrayList<player> players;
 	private boolean hasDH;
 	private String teamName;
-	private MinorLeagueTeam[] farmSystem;
+	
 	private int teamNum;
 	private int wins, divisionWins, conferenceWins;
 	private int losses, divisionLosses, conferenceLosses;
@@ -24,23 +24,12 @@ public class ProfessionalTeam implements team
 		r = new Random();
 		this.teamNum = teamNum;
 		hasDH = this.teamNum > 16;
-		farmSystem = new MinorLeagueTeam[3];
 		pitchingRotation = new pitcher[5];
 		middleRelievers = new pitcher[3];
 		battingOrder = new player[9];
 		placeInRotation = 0;
 	}
-	public void addFarmSystemTeam(MinorLeagueTeam team)
-	{
-		for(int i = 0; i < farmSystem.length; i++)
-		{
-			if(farmSystem[i] == null)
-			{
-				farmSystem[i] = team;
-				break;
-			}
-		}
-	}
+	
 	public void addPlayer(player player)
 	{
 		players.add(player);
@@ -289,21 +278,7 @@ public class ProfessionalTeam implements team
 			reliever = pitcher;
 		}
 	}
-	public MinorLeagueTeam getTripleATeam()
-	{
-		return farmSystem[0];
-		
-	}
-	public MinorLeagueTeam getDoubleATeam()
-	{
-		return farmSystem[1];
-		
-	}
-	public MinorLeagueTeam getSingleATeam()
-	{
-		return farmSystem[2];
-		
-	}
+	
 	public pitcher getNextStarter()
 	{
 		pitcher retVal = null;
@@ -311,7 +286,26 @@ public class ProfessionalTeam implements team
 		if(placeInRotation == 4 && r.nextInt(10) < 3)retVal = spotStarter;
 		else retVal = pitchingRotation[placeInRotation];
 		placeInRotation = (placeInRotation+1)%5;
-		
+		if(retVal == null)
+		{
+			System.out.println("Problem");
+		}
 		return retVal;
+	}
+	public int getWins()
+	{
+		return wins;
+	}
+	public int getLosses()
+	{
+		return losses;
+	}
+	public int getRunsScored()
+	{
+		return runs;
+	}
+	public int getRunsAgainst()
+	{
+		return runsAgainst;
 	}
 }

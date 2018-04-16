@@ -30,5 +30,9 @@ public interface team
 	public void addStartingPitcher(pitcher pitcher);
 	public void addReliefPitcher(pitcher pitcher);
 	public pitcher getNextStarter();
+	public int getWins();
+	public int getLosses();
+	public int getRunsScored();
+	public int getRunsAgainst();
 	
 }

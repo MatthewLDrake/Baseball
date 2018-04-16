@@ -3,6 +3,8 @@ import java.util.ArrayList;
 public interface player extends Comparable<player>
 {
 
+	public double getRecentOverall();
+
 	public void resetGameStats();
 
 	public double getBattingAverageVs(pitchType key);
@@ -36,4 +38,6 @@ public interface player extends Comparable<player>
 	public String getPositionAsString();
 	public int getIntendedLeague();
 	public void setIntendedLeague(int i);
+
+	public boolean advance(int currentBase);
 }

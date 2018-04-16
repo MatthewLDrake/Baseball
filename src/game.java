@@ -1,5 +1,3 @@
-import java.util.Random;
-
 public class game
 {
 	private currentTeam awayTeam, homeTeam;
@@ -29,11 +27,10 @@ public class game
 		{
 			inning(awayTeam, homeTeam);
 
-			System.out.println("Inning: " + inning + "\t\tAwayTeam: " + awayTeamScore + "\tHome Team: "+ homeTeamScore);
 			inning++;
 
 		}
-		System.out.println("Game Over, Final Score:\tAwayTeam: " + awayTeamScore + "\tHome Team: "+ homeTeamScore);
+		System.out.println("Game Over, Final Score:\t" + awayTeam + ": " + awayTeamScore + "\t" + homeTeam + ": "+ homeTeamScore);
 
 	}
 	private void inning(currentTeam battingTeam, currentTeam fieldingTeam)
