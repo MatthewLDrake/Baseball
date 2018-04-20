@@ -40,4 +40,6 @@ public interface player extends Comparable<player>
 	public void setIntendedLeague(int i);
 
 	public boolean advance(int currentBase);
+
+	public void addRBI();
 }

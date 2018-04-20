@@ -23,6 +23,7 @@ public class currentTeam
 		centerFielder = team.getStartingCenterFielder();
 		rightFielder = team.getStartingRightFielder();
 		pitcher = team.getNextStarter();
+		battingOrder.add(pitcher);
 	}
 	public String toString()
 	{

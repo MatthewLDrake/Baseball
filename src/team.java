@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public interface team
+public interface team extends Serializable, Comparable<team>, Iterable<player>
 {
 	public void addPlayer(player player);
 	public boolean hasDH();
@@ -34,5 +35,11 @@ public interface team
 	public int getLosses();
 	public int getRunsScored();
 	public int getRunsAgainst();
+	public void setDivisionRank(int i);
+	public void setConferenceRank(int i);
+	public void setLeagueRank(int i);
+	public int getDivisionRank();
+	public int getConferenceRank();
+	public int getLeagueRank();
 	
 }

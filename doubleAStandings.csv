@@ -1,40 +1,40 @@
-Division A,Wins,Losses,Runs Scored,Runs Against
-Arlington Patriots,80,76,989,954
-California Wildcats,78,78,911,863
-North Carolina Eagles,90,66,1017,888
-Oregon Reds,94,62,1097,908
-Division B,Wins,Losses,Runs Scored,Runs Against
-Colorado Huskies,73,83,755,785
-Grand Rapids Eagles,55,101,846,1018
-Fairfield Vikings,65,91,814,1122
-Grand Rapids Pioneers,103,53,1093,785
-Division C,Wins,Losses,Runs Scored,Runs Against
-Nebraska Spartans,75,81,957,1054
-North Carolina Bombers,98,58,1326,1112
-California Knights,70,86,950,1079
-Florida Wildcats,65,91,973,1142
-Division D,Wins,Losses,Runs Scored,Runs Against
-Wisconsin Trojans,75,81,983,1032
-Arlington Cavaliers,64,92,935,1045
-Texas Stars,71,85,857,956
-California Wildcats,87,69,1005,858
-Division E,Wins,Losses,Runs Scored,Runs Against
-Reno Lions,70,86,820,881
-San Jose Rockets,105,51,1147,802
-North Carolina Blue Devils,54,102,846,1143
-Mississippi Rockets,77,79,1101,1092
-Division F,Wins,Losses,Runs Scored,Runs Against
-Honolulu Crusaders,76,80,964,938
-Kentucky Raiders,52,104,761,1047
-San Antonio Bearcats,93,63,1054,896
-Los Angeles Pirates,85,71,1071,1081
-Division G,Wins,Losses,Runs Scored,Runs Against
-Reno Lions,94,62,1006,824
-Cedar Rapids Red Devils,62,94,966,1145
-California Giants,80,76,910,921
-Tennessee Crusaders,55,101,798,1026
-Division H,Wins,Losses,Runs Scored,Runs Against
-Las Cruces Titans,83,73,1079,987
-Washington Mavericks,92,64,1042,851
-California Panthers,98,58,1113,893
-Stockton Tigers,77,79,780,838
+Division A,Wins,Losses,Runs Scored,Runs Against,Division Rank,Conference Rank,League Rank
+Aurora Lancers,93,63,1310,1086,1,1,2
+New Orleans Cougars,88,68,1335,1152,2,4,7
+Honolulu Cavaliers,88,68,1135,1097,3,5,8
+Indiana Panthers,82,74,1294,1237,4,6,13
+Division B,Wins,Losses,Runs Scored,Runs Against,Division Rank,Conference Rank,League Rank
+Garland Wildcats,90,66,1244,1201,1,2,4
+North Las Vegas Reds,75,81,1358,1359,2,10,18
+Mesa Generals,71,85,1057,1173,3,12,25
+Saint Paul Cougars,68,88,1268,1328,4,14,28
+Division C,Wins,Losses,Runs Scored,Runs Against,Division Rank,Conference Rank,League Rank
+Springfield Cardinals,89,67,1316,1193,1,3,5
+New Orleans Blue Devils,76,80,1246,1243,2,9,17
+Philadelphia Knights,60,96,1219,1471,3,15,31
+Santa Ana Rangers,55,101,1098,1290,4,16,32
+Division D,Wins,Losses,Runs Scored,Runs Against,Division Rank,Conference Rank,League Rank
+St. Petersburg Indians,80,76,1383,1286,1,7,14
+Garland Beavers,78,78,1104,1101,2,8,16
+Hayward Owls,71,85,1203,1309,3,11,24
+Cedar Rapids Storm,70,86,1059,1178,4,13,27
+Division E,Wins,Losses,Runs Scored,Runs Against,Division Rank,Conference Rank,League Rank
+San Francisco Lions,91,65,1323,1181,1,2,3
+Victorville Cardinals,83,73,1273,1197,2,6,11
+Milwaukee Wildcats,82,74,1250,1075,3,7,12
+Akron Raiders,72,84,1147,1262,4,13,23
+Division F,Wins,Losses,Runs Scored,Runs Against,Division Rank,Conference Rank,League Rank
+Lexington Yellowjackets,87,69,1205,1091,1,4,9
+Santa Clara Dragons,86,70,1234,1200,2,5,10
+Sunnyvale Dodgers,72,84,1166,1218,3,12,22
+Killeen Titans,66,90,1012,1050,4,16,30
+Division G,Wins,Losses,Runs Scored,Runs Against,Division Rank,Conference Rank,League Rank
+Port St. Lucie Red Raiders,79,77,1312,1399,1,8,15
+Lubbock Dragons,74,82,1241,1249,2,10,20
+Cape Coral Gators,73,83,1087,1137,3,11,21
+Atlanta Bombers,67,89,1188,1466,4,15,29
+Division H,Wins,Losses,Runs Scored,Runs Against,Division Rank,Conference Rank,League Rank
+San Francisco Buffaloes,96,60,1378,1117,1,1,1
+Tulsa Red Raiders,89,67,1305,1244,2,3,6
+McKinney Bombers,75,81,1113,1195,3,9,19
+Denver Spartans,70,86,1129,1207,4,14,26

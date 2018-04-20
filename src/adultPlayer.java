@@ -35,6 +35,10 @@ public class adultPlayer implements player
 		this.secondaryPositions = secondaryPositions;
 		overall = 50;
 	}
+	public void addRBI()
+	{
+	    stats[5]++;
+	}
 	public String toString()
 	{
 		return name;

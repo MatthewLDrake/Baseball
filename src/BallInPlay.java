@@ -11,16 +11,12 @@ public class BallInPlay
 	private Random r;
 	private player currentBatter;
 	private pitchType type;
+	public static int popupHits = 0, popupAtBats = 0, groundBallHits = 0, groundBallAtBats = 0, flyballHits = 0, flyballAtBats = 0;
 	public BallInPlay(pitchResult pitch, player currentBatter, player firstBase, player secondBase, player thirdBase,
 			currentTeam fieldingTeam, int outs, pitchType type)
 	{
 		this.type = type;
 		this.currentBatter = currentBatter;
-		if(currentBatter == null)
-		{
-			System.err.println("fuck");
-			System.exit(1);
-		}
 		this.firstBase = firstBase;
 		this.secondBase = secondBase;
 		this.thirdBase = thirdBase;
@@ -32,24 +28,53 @@ public class BallInPlay
 		start();
 
 	}
+	public BallInPlay()
+	{
+	    
+	}
 	private void start()
 	{
 		switch (pitch)
 		{
 		case POPUP:
 			result = popup();
+			popupAtBats++;
+			if(!result.equals(atBatResult.ERROR) && !result.equals(atBatResult.OUT))
+			{
+			    popupHits++;
+			}
 			break;
 		case FLYBALL:
 			result = flyball(false);
+			/*flyballAtBats++;
+			if(!result.equals(atBatResult.ERROR) && !result.equals(atBatResult.OUT))
+			{
+			    flyballHits++;
+			}*/
 			break;
 		case STRONG_FLYBALL:
 			result = flyball(true);
+			flyballAtBats++;
+			if(!result.equals(atBatResult.ERROR) && !result.equals(atBatResult.OUT))
+			{
+			    flyballHits++;
+			}
 			break;
 		case GROUNDBALL:
 			result = groundball(false);
+			/*groundBallAtBats++;
+			if(!result.equals(atBatResult.ERROR) && !result.equals(atBatResult.OUT))
+			{
+			    groundBallHits++;
+			}*/
 			break;
 		case STRONG_GROUNDBALL:
 			result = groundball(true);
+			groundBallAtBats++;
+			if(!result.equals(atBatResult.ERROR) && !result.equals(atBatResult.OUT))
+			{
+			    groundBallHits++;
+			}
 			break;
 		default:
 			System.err.println("Invalid type of hit");
