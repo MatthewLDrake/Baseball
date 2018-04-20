@@ -78,6 +78,7 @@ public class game
 						{
 							if(thirdBase != null)
 							{
+								currentPitcher.addRun(true);
 								if(bottomHalf)homeTeamScore++;
 								else awayTeamScore++;
 							}
@@ -108,6 +109,7 @@ public class game
 				balls++;
 				if(thirdBase != null)
 				{
+					currentPitcher.addRun(false);
 					if(bottomHalf)homeTeamScore++;
 					else awayTeamScore++;
 					thirdBase = null;
@@ -145,7 +147,7 @@ public class game
 		
 		if(bottomHalf)homeTeamScore += play.runsScored;
 		else awayTeamScore += play.runsScored;
-		
+		currentPitcher.addRun(play.runsScored, !play.result.equals(atBatResult.ERROR));
 
 	}
 	private boolean gameIsOver(boolean flag)

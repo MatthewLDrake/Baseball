@@ -9,6 +9,11 @@ public interface pitcher
 	public double getStaminaRemaining();
 
 	public double getPitchOverall(pitchType pitch);
+
+	public void addRun(boolean earned);
+	public void addRun(int i, boolean earned);
+	public void addOut();
+	public String getERA();
 	
 	
 }

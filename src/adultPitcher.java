@@ -4,6 +4,7 @@ public class adultPitcher extends adultPlayer implements pitcher
 {
 	private HashMap<pitchType, pitcherPitchRatings> pitches;
 	private double staminaRating, staminaRemaining;
+	private int outs, runsAllowed, earnedRunsAllowed;
 	public adultPitcher(HashMap<pitchType, pitcherPitchRatings> pitches, String name,HashMap<pitchType, batterPitchRatings> battingRatings, double speedRating, double fieldingRating, double throwPower, double throwAccuracy, double staminaRating, int pos)
 	{
 		super(name,battingRatings, speedRating, fieldingRating, throwPower, throwAccuracy, staminaRating, pos, null);
@@ -43,5 +44,24 @@ public class adultPitcher extends adultPlayer implements pitcher
 		pitcherPitchRatings temp = getPitchRatings(pitch);
 		
 		return (temp.getControl() + temp.getMovement())/2;
+	}
+	public void addOut()
+	{
+		outs++;
+	}
+	public void addRun(boolean earned)
+	{
+		addRun(1, earned);
+	}
+	public void addRun(int i, boolean earned)
+	{
+		runsAllowed += i;
+		if(earned) earnedRunsAllowed += i;
+	}
+	public String getERA()
+	{
+		String retVal = "";
+		retVal = "" + 27.0/outs*earnedRunsAllowed;
+		return retVal;
 	}
 }
