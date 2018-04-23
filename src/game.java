@@ -30,7 +30,7 @@ public class game
 	    inning++;
 
 	}
-	System.out.println("Game Over, Final Score:\t" + awayTeam + ": " + awayTeamScore + "\t" + homeTeam + ": "+ homeTeamScore);
+	//System.out.println("Game Over, Final Score:\t" + awayTeam + ": " + awayTeamScore + "\t" + homeTeam + ": "+ homeTeamScore);
 
     }
     private void inning(currentTeam battingTeam, currentTeam fieldingTeam)

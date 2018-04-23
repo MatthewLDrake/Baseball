@@ -25,4 +25,6 @@ public interface pitcher extends player
 	public void addStrikeOut();
 	public void addWalk();
 	public double getERAAsDouble();
+
+	public void pitcherOffseason();
 }

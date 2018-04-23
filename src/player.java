@@ -38,8 +38,10 @@ public interface player extends Comparable<player>
 	public String getPositionAsString();
 	public int getIntendedLeague();
 	public void setIntendedLeague(int i);
-
+	public batterPitchRatings getRatingsVsPitch(pitchType type);
 	public boolean advance(int currentBase);
 
 	public void addRBI();
+
+	public void offseason();
 }

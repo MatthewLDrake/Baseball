@@ -1,6 +1,5 @@
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 public class rookieHolder
 {
@@ -434,6 +433,14 @@ public class rookieHolder
 			}
 			
 			System.out.println(team.getSize() + " " + tripleA.getSize() + " " + doubleA.getSize() + " " + singleA.getSize());
+			team.verifyPositions();
+			team.setBattingOrder();
+			tripleA.verifyPositions();
+			tripleA.setBattingOrder();
+			doubleA.verifyPositions();
+			doubleA.setBattingOrder();
+			singleA.verifyPositions();
+			singleA.setBattingOrder();
 		}
 		
 	}

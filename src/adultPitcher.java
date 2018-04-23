@@ -4,24 +4,24 @@ public class adultPitcher extends adultPlayer implements pitcher
 {
     private HashMap<pitchType, pitcherPitchRatings> pitches;
     private double staminaRating, staminaRemaining;
-    private int outs, runsAllowed, earnedRunsAllowed;
-    private int walksGiven, strikeoutsGiven;
+    private int[] stats, careerStats;
     public adultPitcher(HashMap<pitchType, pitcherPitchRatings> pitches, String name,HashMap<pitchType, batterPitchRatings> battingRatings, double speedRating, double fieldingRating, double throwPower, double throwAccuracy, double staminaRating, int pos)
     {
 	super(name,battingRatings, speedRating, fieldingRating, throwPower, throwAccuracy, staminaRating, pos, null);
 	this.pitches = pitches;
 	staminaRemaining = 100;
 	this.staminaRating = staminaRating;
+	
+	stats = new int[5];
+	careerStats = new int[5];
+	
+	for(int i = 0; i < stats.length; i++)
+	{
+	    stats[i] = 0;
+	    careerStats[i] = 0;
+	}
     }
-    public adultPitcher()
-    {
-	super(0);
-	pitches = new HashMap<pitchType, pitcherPitchRatings>();
-	pitches.put(pitchType.FOUR_SEAM_FASTBALL, new pitcherPitchRatings(90, 50, 50, 50));
-	staminaRemaining = 100;
-	this.staminaRating = 50;
 
-    }
     public double getStaminaRating()
     {
 	return staminaRating;
@@ -48,16 +48,16 @@ public class adultPitcher extends adultPlayer implements pitcher
     }
     public void addOut(int amount)
     {
-	outs += amount;
+	stats[0] += amount;
     }
     public void addStrikeOut()
     {
-	strikeoutsGiven++;
-	outs++;
+	stats[1]++;
+	stats[0]++;
     }
     public void addWalk()
     {
-	walksGiven++;
+	stats[2]++;
     }
     public void addRun(boolean earned)
     {
@@ -65,40 +65,50 @@ public class adultPitcher extends adultPlayer implements pitcher
     }
     public void addRun(int i, boolean earned)
     {
-	runsAllowed += i;
-	if(earned) earnedRunsAllowed += i;
+	stats[3] += i;
+	if(earned) stats[4] += i;
     }
     public String getERA()
     {
 	String retVal = "";
-	retVal = "" + 27.0/outs*earnedRunsAllowed;
+	retVal = "" + 27.0/stats[0]*stats[4];
 	return retVal;
     }
     public double getERAAsDouble()
     {
-	if(outs == 0)return 0;
-	return 27.0/outs*earnedRunsAllowed;
+	if(stats[0] == 0)return 0;
+	return 27.0/stats[0]*stats[4];
     }
     public Inning getInnings()
     {
-	return new Inning(outs/3, outs%3);
+	return new Inning(stats[0]/3, stats[0]%3);
     }
     public int getEarnedRuns()
     {
-	return earnedRunsAllowed;
+	return stats[4];
     }
     public int getRunsAllowed()
     {
-	return runsAllowed;
+	return stats[3];
     }
     @Override
     public int getWalksGiven()
     {
-	return walksGiven;
+	return stats[2];
     }
     @Override
     public int getStrikeOutsPitched()
     {
-	return strikeoutsGiven;
+	return stats[1];
+    }
+    @Override
+    public void pitcherOffseason()
+    {
+	for(int i = 0; i < stats.length; i++)
+	{
+	    careerStats[i] += stats[i];
+	    stats[i] = 0;
+	    
+	}	
     }
 }
