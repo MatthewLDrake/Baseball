@@ -124,7 +124,7 @@ public class Controller
 	{
 	    e1.printStackTrace();
 	}
-	for(int j = 0; j < 100; j++)
+	for(int j = 0; j < 5; j++)
 	{
 	    System.out.println(j);
 	    Schedule schedule = new Schedule();
@@ -759,14 +759,14 @@ public class Controller
 	// 0 is atBats, 1 is hits, 2 is doubles, 3 is triples, 4 is Home Runs, 5 is RBI's, 6 is Strikeouts, 7 is walks
 	for(team t:league)
 	{
-	    stats.println(t + "'s Player Name,At Bats,Hits,Batting Average,Doubles,Triples,Home Runs,RBI's,Strikeouts,Walks,Innings Pitched,ERA,Earned Runs Allowed,Runs Allowed,Strikeouts,Walks");
+	    stats.println(t + "'s Player Name,At Bats,Hits,Batting Average,Doubles,Triples,Home Runs,RBI's,Strikeouts,Walks,Innings Pitched,ERA,Earned Runs Allowed,Runs Allowed,Strikeouts,Walks,Wins,Losses");
 	    for(player p:t)
 	    {
-		stats.printf("%s,%d,%d,.%03.0f,%d,%d,%d,%d,%d,%d", p, p.getTotalAtBats(), p.getTotalHits(), p.getBattingAverage()*1000,p.getDoubles(),p.getTriples(),p.getHomeRuns(),p.getRBIs(),p.getStrikeOuts(),p.getWalks());
+		stats.printf("%s,%d,%d,.%03.0f,%d,%d,%d,%d,%d,%d", p.getPositionAsString() + " " + p, p.getTotalAtBats(), p.getTotalHits(), p.getBattingAverage()*1000,p.getDoubles(),p.getTriples(),p.getHomeRuns(),p.getRBIs(),p.getStrikeOuts(),p.getWalks());
 		if(p instanceof pitcher)
 		{
 		    pitcher pitch = (pitcher)p;
-		    stats.printf(",%s,%01.2f,%d,%d,%d,%d\n", pitch.getInnings(),pitch.getERAAsDouble(),pitch.getEarnedRuns(),pitch.getRunsAllowed(),pitch.getStrikeOutsPitched(),pitch.getWalksGiven());
+		    stats.printf(",%s,%01.2f,%d,%d,%d,%d,%d,%d\n", pitch.getInnings(),pitch.getERAAsDouble(),pitch.getEarnedRuns(),pitch.getRunsAllowed(),pitch.getStrikeOutsPitched(),pitch.getWalksGiven(), pitch.getWins(), pitch.getLosses());
 		}
 		else stats.println();
 	    }

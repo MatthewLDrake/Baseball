@@ -12,8 +12,8 @@ public class adultPitcher extends adultPlayer implements pitcher
 	staminaRemaining = 100;
 	this.staminaRating = staminaRating;
 	
-	stats = new int[5];
-	careerStats = new int[5];
+	stats = new int[7];
+	careerStats = new int[7];
 	
 	for(int i = 0; i < stats.length; i++)
 	{
@@ -110,5 +110,21 @@ public class adultPitcher extends adultPlayer implements pitcher
 	    stats[i] = 0;
 	    
 	}	
+    }
+    public void addWin()
+    {
+    	stats[5]++;
+    }
+    public void addLoss()
+    {
+    	stats[6]++;
+    }
+    public int getWins()
+    {
+    	return stats[5];
+    }
+    public int getLosses()
+    {
+    	return stats[6];
     }
 }

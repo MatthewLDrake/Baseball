@@ -27,4 +27,9 @@ public interface pitcher extends player
 	public double getERAAsDouble();
 
 	public void pitcherOffseason();
+
+	public void addWin();
+	public void addLoss();
+	public int getWins();
+    public int getLosses();
 }

@@ -1,18 +1,21 @@
 public class game
 {
-    private currentTeam awayTeam, homeTeam;
+	private currentTeam awayTeam, homeTeam;
     private int homeTeamScore, awayTeamScore;
     private boolean bottomHalf;
     private int inning;
     private int outs;
     private player firstBase, secondBase, thirdBase, currentBatter;
     private pitcher currentPitcher;
-    public game(team teamOne, team teamTwo)
+    private pitcher opposingPitcher;
+    private pitcher winningPitcher, losingPitcher;
+    public game(team teamOne, team teamTwo) 
     {
 	this.homeTeam = new currentTeam(teamOne);
 	this.awayTeam = new currentTeam(teamTwo);
 
 	currentPitcher = awayTeam.getPitcher();
+	opposingPitcher = homeTeam.getPitcher();
 
 	bottomHalf = false;
 	inning = 1;
@@ -30,28 +33,45 @@ public class game
 	    inning++;
 
 	}
+	winningPitcher.addWin();
+	losingPitcher.addLoss();
 	//System.out.println("Game Over, Final Score:\t" + awayTeam + ": " + awayTeamScore + "\t" + homeTeam + ": "+ homeTeamScore);
 
     }
     private void inning(currentTeam battingTeam, currentTeam fieldingTeam)
     {
+    	boolean losingTeamBatting = false;
 	bottomHalf = false;
+	losingTeamBatting = awayTeamScore <= homeTeamScore;
 	while(outs != 3)
 	{
 	    currentBatter = battingTeam.getNext();
 	    atBat(battingTeam, fieldingTeam);
 	}
+	if(losingTeamBatting && awayTeamScore > homeTeamScore)
+	{
+		winningPitcher = opposingPitcher;
+		losingPitcher = currentPitcher;
+	}
+	opposingPitcher = currentPitcher;
 	currentPitcher = battingTeam.getPitcher();
 	firstBase = null;
 	secondBase = null;
 	thirdBase = null;
 	outs = 0;
 	bottomHalf = true;
+	losingTeamBatting = awayTeamScore >= homeTeamScore;
 	while(outs != 3 && !gameIsOver(false))
 	{
 	    currentBatter = fieldingTeam.getNext();
 	    atBat(fieldingTeam, battingTeam);
 	}
+	if(losingTeamBatting && awayTeamScore < homeTeamScore)
+	{
+		winningPitcher = opposingPitcher;
+		losingPitcher = currentPitcher;
+	}
+	opposingPitcher = currentPitcher;
 	currentPitcher = fieldingTeam.getPitcher();
 	firstBase = null;
 	secondBase = null;

@@ -420,6 +420,10 @@ public class ProfessionalTeam implements team
 		backups.get(i).setPositionToOrderBy(3);
 	    }
 	    Collections.sort(backups);
+	    if(backups.size() == 0)
+	    {
+	    	printPlayers();
+	    }
 	    startingThirdBase = backups.remove(0);
 	}
 	if(startingShortStop == null)
@@ -471,7 +475,16 @@ public class ProfessionalTeam implements team
 
     }
 
-    @Override
+    private void printPlayers()
+	{
+		for(int i = 0; i < players.size(); i++)
+		{
+			System.out.println(players.get(i).getPositionAsString() + ": " + players.get(i));
+		}
+		
+	}
+
+	@Override
     public void setBattingOrder()
     {
 	ArrayList<player> starters = getStarters();

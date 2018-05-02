@@ -45,17 +45,17 @@ public class Pitch
 	    if(aim == INSIDE_STRIKE)
 	    {
 		baseStrike = 95;
-		baseHitability = 85;
+		baseHitability = 75;
 	    }
 	    else if(aim == OUTER_STRIKE)
 	    {
 		baseStrike = 55;
-		baseHitability = 50;
+		baseHitability = 40;
 	    }
 	    else if(aim  == OUTER_EDGE)
 	    {
 		baseStrike = 40;
-		baseHitability = 40;
+		baseHitability = 30;
 	    }
 	    else
 	    {
@@ -68,19 +68,19 @@ public class Pitch
 	    if(aim == INSIDE_STRIKE)
 	    {
 		baseStrike = 60;
-		baseHitability = 85;
+		baseHitability = 75;
 	    }
 	    else if(aim == OUTER_STRIKE)
 	    {
 		if(r.nextBoolean())
 		{
 		    baseStrike = 35;
-		    baseHitability = 45;
+		    baseHitability = 35;
 		}
 		else
 		{
 		    baseStrike = 65;
-		    baseHitability = 85;
+		    baseHitability = 75;
 		}
 
 	    }
@@ -89,12 +89,12 @@ public class Pitch
 		if(r.nextBoolean())
 		{
 		    baseStrike = 75;
-		    baseHitability = 85;
+		    baseHitability = 75;
 		}
 		else
 		{
 		    baseStrike = 0;
-		    baseHitability = 20;
+		    baseHitability = 10;
 		}
 	    }
 	    else
@@ -107,7 +107,7 @@ public class Pitch
 		else
 		{
 		    baseStrike = 40;
-		    baseHitability = 85;
+		    baseHitability = 75;
 		}
 	    }
 	}
