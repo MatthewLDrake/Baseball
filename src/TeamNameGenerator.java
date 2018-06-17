@@ -441,7 +441,6 @@ public class TeamNameGenerator
 		int teamNum = r.nextInt(teamNames.size()*teamNames.size());
 		teamNum = (teamNames.size()-1)-(int)Math.floor(Math.sqrt(teamNum));
 		String name =  location.get(locationNum).getLocation() + " " + teamNames.get(teamNum);
-		System.out.println(name);
 		recentLocation = location.get(locationNum);
 		recentName = teamNames.get(teamNum);
 		state = location.get(locationNum).isState();

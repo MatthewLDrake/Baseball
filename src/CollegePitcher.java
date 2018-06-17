@@ -1,15 +1,15 @@
 import java.util.HashMap;
 
-public class adultPitcher extends adultPlayer implements pitcher
+public class CollegePitcher extends CollegePlayer implements pitcher
 {
-    private HashMap<pitchType, pitcherPitchRatings> pitches;
+	private HashMap<pitchType, pitcherPitchRatings> pitches;
     private double staminaRating, staminaRemaining;
     private int[] stats, careerStats;
     private int runsInCurrentGame;
     private boolean pitched;
-    public adultPitcher(HashMap<pitchType, pitcherPitchRatings> pitches, String name,HashMap<pitchType, batterPitchRatings> battingRatings, double speedRating, double fieldingRating, double throwPower, double throwAccuracy, double staminaRating, int pos, int age)
+    public CollegePitcher(HashMap<pitchType, pitcherPitchRatings> pitches, String name,HashMap<pitchType, batterPitchRatings> battingRatings, double speedRating, double fieldingRating, double throwPower, double throwAccuracy, double staminaRating, int pos, int age, int year, boolean redShirt)
     {
-	super(name,battingRatings, speedRating, fieldingRating, throwPower, throwAccuracy, staminaRating, pos, null, age);
+	super(name,battingRatings, speedRating, fieldingRating, throwPower, throwAccuracy, staminaRating, pos, null, age, year, redShirt);
 	this.pitches = pitches;
 	staminaRemaining = 100;
 	this.staminaRating = staminaRating;

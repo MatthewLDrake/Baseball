@@ -32,4 +32,15 @@ public interface pitcher extends player
 	public void addLoss();
 	public int getWins();
     public int getLosses();
+    public void pitchHappened();
+
+	public int getRunsAllowedInCurrentGame();
+
+	public void successfulSave();
+
+	public void addSaveOpportunity();
+	public int getSaves();
+	public int getBlownSaves();
+	public boolean hasPitched();
+	public void startedPitching();
 }

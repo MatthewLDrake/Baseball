@@ -1,14 +1,14 @@
 public class results
     {
-	private team winner;
+	private Team winner;
 	private int teamOneWins, teamTwoWins;
-	public results(team winner, int teamOneWins, int teamTwoWins)
+	public results(Team winner, int teamOneWins, int teamTwoWins)
 	{
 	    this.winner = winner;
 	    this.teamOneWins = teamOneWins;
 	    this.teamTwoWins = teamTwoWins;
 	}
-	public team getWinner()
+	public Team getWinner()
 	{
 	    return winner;
 	}

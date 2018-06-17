@@ -44,4 +44,7 @@ public interface player extends Comparable<player>
 	public void addRBI();
 
 	public void offseason();
+	public void endGame();
+	
+	public int getAge();
 }

@@ -6,8 +6,10 @@ public class currentTeam
 	private pitcher pitcher;
 	private player catcher, firstBase, secondBase, thirdBase, shortStop, leftFielder, rightFielder, centerFielder;
 	public String teamName;
-	public currentTeam(team team)
+	private Team team;
+	public currentTeam(Team team, boolean DHGame)
 	{
+		this.team = team;
 		teamName = team.toString();
 		battingOrder = new ArrayList<player>();
 		for(int i = 0; i < team.getBattingOrder().length;i++)
@@ -23,7 +25,9 @@ public class currentTeam
 		centerFielder = team.getStartingCenterFielder();
 		rightFielder = team.getStartingRightFielder();
 		pitcher = team.getNextStarter();
-		battingOrder.add(pitcher);
+		pitcher.startedPitching();
+		if(DHGame)battingOrder.add(team.getDH());
+		else battingOrder.add(pitcher);
 	}
 	public String toString()
 	{
@@ -93,6 +97,20 @@ public class currentTeam
 	public void setStartingPitcher(pitcher adultPitcher)
 	{
 		this.pitcher = adultPitcher;
+		
+	}
+	public pitcher changePitcher(boolean saveOpportunity)
+	{
+		if(pitcher.getStaminaRemaining() > 70 && pitcher.getRunsAllowedInCurrentGame() == 0)return pitcher;
+		
+		if(saveOpportunity)
+		{
+			pitcher = team.getCloser();
+			pitcher.startedPitching();
+			pitcher.addSaveOpportunity();
+		}
+		
+		return pitcher;
 		
 	}
 	

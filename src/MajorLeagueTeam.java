@@ -1,11 +1,11 @@
 
 
-public class MajorLeagueTeam extends ProfessionalTeam
+public class MajorLeagueTeam extends Team
 {
 	private MinorLeagueTeam[] farmSystem;
 	public MajorLeagueTeam(String teamName, int teamNum)
 	{
-		super(teamName, teamNum);
+		super(teamName, teamNum, 0);
 		farmSystem = new MinorLeagueTeam[3];
 	}
 

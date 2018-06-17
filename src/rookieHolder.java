@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Random;
 public class rookieHolder
 {
-	private team team;
+	private Team team;
 	private ArrayList<player> players;
 	private boolean[] majorStarters;
 	private boolean[] majorStartingPitchers;
@@ -26,7 +26,7 @@ public class rookieHolder
 	private boolean firstStage, secondStage, thirdStage, fourthStage;
 	private boolean firstDraft;
 	private int mostRecentIntendedLeague;
-	public rookieHolder(team team, boolean firstDraft)
+	public rookieHolder(Team team, boolean firstDraft)
 	{
 		this.firstDraft = firstDraft;
 		r= new Random();

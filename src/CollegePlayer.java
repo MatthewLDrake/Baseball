@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class adultPlayer implements player
+public class CollegePlayer implements player
 {
 	private HashMap<pitchType, batterPitchRatings> pitchStats;
 	// 0 is speed, 1 is fielding, 2 is throw power, 3 is throw accuracy, 4 is stamina
@@ -13,9 +13,15 @@ public class adultPlayer implements player
 	private double overall;
 	private String name;
 	private double staminaRemaining;
-	private int age;
-	public adultPlayer(String name,HashMap<pitchType, batterPitchRatings> pitchStats, double speedRating, double fieldingRating, double throwPower, double throwAccuracy, double staminaRating, int pos, ArrayList<Integer> secondaryPositions, int age)
+	private boolean redShirt;
+	private int age, year;
+	private boolean isRedShirt;
+	public CollegePlayer(String name,HashMap<pitchType, batterPitchRatings> pitchStats, double speedRating, double fieldingRating, double throwPower, double throwAccuracy, double staminaRating, int pos, ArrayList<Integer> secondaryPositions, int age, int year, boolean redShirt)
 	{
+		isRedShirt = false;
+		this.age = age;
+		this.year = year;
+		this.redShirt = redShirt;
 		this.pitchStats = pitchStats;
 		this.name = name;
 		ratings = new double[5];
@@ -38,9 +44,9 @@ public class adultPlayer implements player
 		this.secondaryPositions = secondaryPositions;
 		overall = 50;
 	}
-	public int getAge()
+	public void setRedShirt()
 	{
-		return age;
+		isRedShirt = true;
 	}
 	public void addRBI()
 	{
@@ -448,7 +454,20 @@ public class adultPlayer implements player
 			pitcher temp = (pitcher)this;
 			temp.pitcherOffseason();
 		}
+		if(isRedShirt)
+		{
+			isRedShirt = false;
+			redShirt = true;
+		}
+		else
+		{
+			year++;
+		}
 		age++;
+	}
+	public int getAge()
+	{
+		return age;
 	}
 	public String getPositionAsString()
 	{
@@ -517,4 +536,5 @@ public class adultPlayer implements player
 		// TODO: This
 
 	}
+
 }

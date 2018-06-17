@@ -1,18 +1,19 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class BallInPlay
 {
-    public player firstBase, secondBase, thirdBase;
-    public int runsScored;
+    public PlayerOnBase firstBase, secondBase, thirdBase;
+    public ArrayList<PlayerOnBase> runsScored;
     public atBatResult result;
     private pitchResult pitch;
     private currentTeam fielders;
     public int outs;
     private Random r;
-    private player currentBatter;
+    private PlayerOnBase currentBatter;
     private pitchType type;
     public static int popupHits = 0, popupAtBats = 0, groundBallHits = 0, groundBallAtBats = 0, flyballHits = 0, flyballAtBats = 0;
-    public BallInPlay(pitchResult pitch, player currentBatter, player firstBase, player secondBase, player thirdBase,
+    public BallInPlay(pitchResult pitch, PlayerOnBase currentBatter, PlayerOnBase firstBase, PlayerOnBase secondBase, PlayerOnBase thirdBase,
 	    currentTeam fieldingTeam, int outs, pitchType type)
     {
 	this.type = type;
@@ -24,7 +25,7 @@ public class BallInPlay
 	this.pitch = pitch;
 	this.fielders = fieldingTeam;
 	this.outs = outs;
-
+	runsScored = new ArrayList<PlayerOnBase>();
 	start();
 
     }
@@ -125,22 +126,22 @@ public class BallInPlay
 	double speed = fieldingPlayer.getSpeedRating();
 
 	double timeLeft = timeToMeetingPoint - findTime(speed, distanceToBall);
-	double runner = findTime(currentBatter.getSpeedRating(), 90) - (timeLeft+timeToMeetingPoint);
+	double runner = findTime(currentBatter.getPlayer().getSpeedRating(), 90) - (timeLeft+timeToMeetingPoint);
 	double runnerFromFirst = -1, runnerFromSecond = -1, runnerFromThird = -1;
 
 	if(outs == 2)
 	{
 	    if(firstBase != null)
 	    {
-		runnerFromFirst = findTime(firstBase.getSpeedRating(), 90) - (timeLeft+timeToMeetingPoint);
+		runnerFromFirst = findTime(firstBase.getPlayer().getSpeedRating(), 90) - (timeLeft+timeToMeetingPoint);
 	    }
 	    if(secondBase != null)
 	    {
-		runnerFromSecond = findTime(secondBase.getSpeedRating(), 90) - (timeLeft+timeToMeetingPoint);
+		runnerFromSecond = findTime(secondBase.getPlayer().getSpeedRating(), 90) - (timeLeft+timeToMeetingPoint);
 	    }
 	    if(thirdBase != null)
 	    {
-		runnerFromThird = findTime(thirdBase.getSpeedRating(), 90) - (timeLeft+timeToMeetingPoint);
+		runnerFromThird = findTime(thirdBase.getPlayer().getSpeedRating(), 90) - (timeLeft+timeToMeetingPoint);
 	    }
 	}
 
@@ -154,15 +155,15 @@ public class BallInPlay
 	    {
 		if(firstBase != null)
 		{
-		    runnerFromFirst = findTime(firstBase.getSpeedRating(), 90);
+		    runnerFromFirst = findTime(firstBase.getPlayer().getSpeedRating(), 90);
 		}
 		if(secondBase != null)
 		{
-		    runnerFromSecond = findTime(secondBase.getSpeedRating(), 90);
+		    runnerFromSecond = findTime(secondBase.getPlayer().getSpeedRating(), 90);
 		}
 		if(thirdBase != null)
 		{
-		    runnerFromThird = findTime(thirdBase.getSpeedRating(), 90);
+		    runnerFromThird = findTime(thirdBase.getPlayer().getSpeedRating(), 90);
 		}
 		if(runner > 0)runner -= .2;
 		if(runnerFromFirst > 0)runnerFromFirst -= .2;
@@ -207,7 +208,7 @@ public class BallInPlay
 		    result = atBatResult.ERROR;
 		    if(thirdBase != null)
 		    {
-			runsScored++;
+			runsScored.add(thirdBase);
 			thirdBase = null;
 		    }
 		    if(secondBase != null)
@@ -237,7 +238,7 @@ public class BallInPlay
 			result = atBatResult.ERROR;
 			if(thirdBase != null)
 			{
-			    runsScored++;
+			    runsScored.add(thirdBase);
 			    thirdBase = null;
 			}
 			if(secondBase != null)
@@ -265,7 +266,7 @@ public class BallInPlay
 			result = atBatResult.ERROR;
 			if(thirdBase != null)
 			{
-			    runsScored++;
+			    runsScored.add(thirdBase);
 			    thirdBase = null;
 			}
 			if(secondBase != null)
@@ -295,7 +296,7 @@ public class BallInPlay
 		    result = atBatResult.ERROR;
 		    if(thirdBase != null)
 		    {
-			runsScored++;
+			runsScored.add(thirdBase);
 			thirdBase = null;
 		    }
 		    if(secondBase != null)
@@ -320,7 +321,7 @@ public class BallInPlay
 		    if(outs != 3)
 		    {
 			secondBase = null;
-			if(thirdBase != null)runsScored++;
+			if(thirdBase != null)runsScored.add(thirdBase);
 			if(firstBase != null)secondBase = firstBase;
 			firstBase = currentBatter;
 
@@ -332,7 +333,7 @@ public class BallInPlay
 		    result = atBatResult.ERROR;
 		    if(thirdBase != null)
 		    {
-			runsScored++;
+			runsScored.add(thirdBase);
 			thirdBase = null;
 		    }
 		    if(secondBase != null)
@@ -356,7 +357,7 @@ public class BallInPlay
 
 	    if(thirdBase != null)
 	    {
-		runsScored++;
+		runsScored.add(thirdBase);
 		thirdBase = null;
 	    }
 	    if(secondBase != null)
@@ -427,15 +428,15 @@ public class BallInPlay
     private atBatResult flyball(boolean strong)
     {
 	atBatResult result;
-	double power = currentBatter.getBatterRatingsVs(type).getPowerRating();
+	double power = currentBatter.getPlayer().getBatterRatingsVs(type).getPowerRating();
 	double distanceTravelled = findDistance(power, strong);
 	if(distanceTravelled > 380)
 	{
 	    result = atBatResult.HOME_RUN;
-	    runsScored = 1;
-	    if(firstBase != null)runsScored++;
-	    if(secondBase != null)runsScored++;
-	    if(thirdBase != null)runsScored++;
+	    runsScored.add(currentBatter);
+	    if(firstBase != null)runsScored.add(firstBase);
+	    if(secondBase != null)runsScored.add(secondBase);
+	    if(thirdBase != null)runsScored.add(thirdBase);
 
 	    firstBase=  null;
 	    secondBase = null;
@@ -491,7 +492,7 @@ public class BallInPlay
 		    {
 			if(thirdBase != null)
 			{
-			    runsScored++;
+			    runsScored.add(thirdBase);
 			    sac = true;
 			    thirdBase = null;
 			}
@@ -536,7 +537,7 @@ public class BallInPlay
 			    double threshHold = 0.0;
 			    if(playerThreeHold)
 			    {
-				threshHold = players[3].getPlayer().getSpeedRating()*.6;
+				threshHold = players[3].getPlayer().getPlayer().getSpeedRating()*.6;
 				if(threshHold < num)
 				{
 				    players[3].setOut();
@@ -550,7 +551,7 @@ public class BallInPlay
 				{
 				    result = atBatResult.SACRIFICE;
 				    players[3].advancedSafely();
-				    runsScored++;
+				    runsScored.add(thirdBase);
 				    if(playerTwoHold)
 				    {
 					players[2].advancedSafely();
@@ -559,7 +560,7 @@ public class BallInPlay
 			    }
 			    else
 			    {
-				threshHold = players[2].getPlayer().getSpeedRating()*.6;
+				threshHold = players[2].getPlayer().getPlayer().getSpeedRating()*.6;
 				if(threshHold < num)
 				{
 				    players[2].setOut();
@@ -633,7 +634,7 @@ public class BallInPlay
 			{
 			    thrownFromOutfield = true;
 			    double acc = fieldingPlayer.getThrowAccuracy();
-			    double runnerSpeed = players[i].getPlayer().getSpeedRating();
+			    double runnerSpeed = players[i].getPlayer().getPlayer().getSpeedRating();
 
 			    if(finishFromOutfield(acc, runnerSpeed, i))
 			    {
@@ -672,7 +673,7 @@ public class BallInPlay
 	{
 	    if(players[i] != null)
 	    {
-		if(players[i].hasScored())runsScored++;
+		if(players[i].hasScored())runsScored.add(players[i].getPlayer());
 		else if(players[i].isOut())continue;
 		else if(players[i].getFinalBase() == 3)thirdBase = players[i].getPlayer();
 		else if(players[i].getFinalBase() == 2)secondBase = players[i].getPlayer();
@@ -944,7 +945,7 @@ public class BallInPlay
 	{
 	    if(players[i] != null)
 	    {
-		if(players[i].hasScored())runsScored++;
+		if(players[i].hasScored())runsScored.add(players[i].getPlayer());
 		else if(players[i].isOut())continue;
 		else if(players[i].getFinalBase() == 3)thirdBase = players[i].getPlayer();
 		else if(players[i].getFinalBase() == 2)secondBase = players[i].getPlayer();
@@ -967,12 +968,12 @@ public class BallInPlay
 
 class playerHelper
 {
-    private player player;
+    private PlayerOnBase player;
     private boolean hasScored;
     private int currentBase;
     private double timeToNextBase;
     private boolean isOut;
-    public playerHelper(player player, int startingBase)
+    public playerHelper(PlayerOnBase player, int startingBase)
     {
 	this.player = player;
 	currentBase = startingBase;
@@ -1003,7 +1004,7 @@ class playerHelper
     {
 	return timeToNextBase;
     }
-    public player getPlayer()
+    public PlayerOnBase getPlayer()
     {
 	return player;
     }
@@ -1024,7 +1025,7 @@ class playerHelper
     {
 	if(b)
 	{
-	    return player.advance(currentBase);
+	    return player.getPlayer().advance(currentBase);
 	}
 	else if(!b && !hasScored)
 	{

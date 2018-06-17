@@ -7,53 +7,53 @@ import java.util.Collections;
 public class Controller
 {
     private static createLeagues create;
-    private static ArrayList<team> majorDivisionA = new ArrayList<team>();
-    private static ArrayList<team> majorDivisionB = new ArrayList<team>();
-    private static ArrayList<team> majorDivisionC = new ArrayList<team>();
-    private static ArrayList<team> majorDivisionD = new ArrayList<team>();
-    private static ArrayList<team> majorDivisionE = new ArrayList<team>();
-    private static ArrayList<team> majorDivisionF = new ArrayList<team>();
-    private static ArrayList<team> majorDivisionG = new ArrayList<team>();
-    private static ArrayList<team> majorDivisionH = new ArrayList<team>();
-    private static ArrayList<team> majorConferenceA = new ArrayList<team>();
-    private static ArrayList<team> majorConferenceB = new ArrayList<team>();
-    private static ArrayList<team> majorLeague = new ArrayList<team>();
+    private static ArrayList<Team> majorDivisionA = new ArrayList<Team>();
+    private static ArrayList<Team> majorDivisionB = new ArrayList<Team>();
+    private static ArrayList<Team> majorDivisionC = new ArrayList<Team>();
+    private static ArrayList<Team> majorDivisionD = new ArrayList<Team>();
+    private static ArrayList<Team> majorDivisionE = new ArrayList<Team>();
+    private static ArrayList<Team> majorDivisionF = new ArrayList<Team>();
+    private static ArrayList<Team> majorDivisionG = new ArrayList<Team>();
+    private static ArrayList<Team> majorDivisionH = new ArrayList<Team>();
+    private static ArrayList<Team> majorConferenceA = new ArrayList<Team>();
+    private static ArrayList<Team> majorConferenceB = new ArrayList<Team>();
+    private static ArrayList<Team> majorLeague = new ArrayList<Team>();
 
-    private static ArrayList<team> tripleADivisionA = new ArrayList<team>();
-    private static ArrayList<team> tripleADivisionB = new ArrayList<team>();
-    private static ArrayList<team> tripleADivisionC = new ArrayList<team>();
-    private static ArrayList<team> tripleADivisionD = new ArrayList<team>();
-    private static ArrayList<team> tripleADivisionE = new ArrayList<team>();
-    private static ArrayList<team> tripleADivisionF = new ArrayList<team>();
-    private static ArrayList<team> tripleADivisionG = new ArrayList<team>();
-    private static ArrayList<team> tripleADivisionH = new ArrayList<team>();
-    private static ArrayList<team> tripleAConferenceA = new ArrayList<team>();
-    private static ArrayList<team> tripleAConferenceB = new ArrayList<team>();
-    private static ArrayList<team> tripleALeague = new ArrayList<team>();
+    private static ArrayList<Team> tripleADivisionA = new ArrayList<Team>();
+    private static ArrayList<Team> tripleADivisionB = new ArrayList<Team>();
+    private static ArrayList<Team> tripleADivisionC = new ArrayList<Team>();
+    private static ArrayList<Team> tripleADivisionD = new ArrayList<Team>();
+    private static ArrayList<Team> tripleADivisionE = new ArrayList<Team>();
+    private static ArrayList<Team> tripleADivisionF = new ArrayList<Team>();
+    private static ArrayList<Team> tripleADivisionG = new ArrayList<Team>();
+    private static ArrayList<Team> tripleADivisionH = new ArrayList<Team>();
+    private static ArrayList<Team> tripleAConferenceA = new ArrayList<Team>();
+    private static ArrayList<Team> tripleAConferenceB = new ArrayList<Team>();
+    private static ArrayList<Team> tripleALeague = new ArrayList<Team>();
 
-    private static ArrayList<team> doubleADivisionA = new ArrayList<team>();
-    private static ArrayList<team> doubleADivisionB = new ArrayList<team>();
-    private static ArrayList<team> doubleADivisionC = new ArrayList<team>();
-    private static ArrayList<team> doubleADivisionD = new ArrayList<team>();
-    private static ArrayList<team> doubleADivisionE = new ArrayList<team>();
-    private static ArrayList<team> doubleADivisionF = new ArrayList<team>();
-    private static ArrayList<team> doubleADivisionG = new ArrayList<team>();
-    private static ArrayList<team> doubleADivisionH = new ArrayList<team>();
-    private static ArrayList<team> doubleAConferenceA = new ArrayList<team>();
-    private static ArrayList<team> doubleAConferenceB = new ArrayList<team>();
-    private static ArrayList<team> doubleALeague = new ArrayList<team>();
+    private static ArrayList<Team> doubleADivisionA = new ArrayList<Team>();
+    private static ArrayList<Team> doubleADivisionB = new ArrayList<Team>();
+    private static ArrayList<Team> doubleADivisionC = new ArrayList<Team>();
+    private static ArrayList<Team> doubleADivisionD = new ArrayList<Team>();
+    private static ArrayList<Team> doubleADivisionE = new ArrayList<Team>();
+    private static ArrayList<Team> doubleADivisionF = new ArrayList<Team>();
+    private static ArrayList<Team> doubleADivisionG = new ArrayList<Team>();
+    private static ArrayList<Team> doubleADivisionH = new ArrayList<Team>();
+    private static ArrayList<Team> doubleAConferenceA = new ArrayList<Team>();
+    private static ArrayList<Team> doubleAConferenceB = new ArrayList<Team>();
+    private static ArrayList<Team> doubleALeague = new ArrayList<Team>();
 
-    private static ArrayList<team> singleADivisionA = new ArrayList<team>();
-    private static ArrayList<team> singleADivisionB = new ArrayList<team>();
-    private static ArrayList<team> singleADivisionC = new ArrayList<team>();
-    private static ArrayList<team> singleADivisionD = new ArrayList<team>();
-    private static ArrayList<team> singleADivisionE = new ArrayList<team>();
-    private static ArrayList<team> singleADivisionF = new ArrayList<team>();
-    private static ArrayList<team> singleADivisionG = new ArrayList<team>();
-    private static ArrayList<team> singleADivisionH = new ArrayList<team>();
-    private static ArrayList<team> singleAConferenceA = new ArrayList<team>();
-    private static ArrayList<team> singleAConferenceB = new ArrayList<team>();
-    private static ArrayList<team> singleALeague = new ArrayList<team>();
+    private static ArrayList<Team> singleADivisionA = new ArrayList<Team>();
+    private static ArrayList<Team> singleADivisionB = new ArrayList<Team>();
+    private static ArrayList<Team> singleADivisionC = new ArrayList<Team>();
+    private static ArrayList<Team> singleADivisionD = new ArrayList<Team>();
+    private static ArrayList<Team> singleADivisionE = new ArrayList<Team>();
+    private static ArrayList<Team> singleADivisionF = new ArrayList<Team>();
+    private static ArrayList<Team> singleADivisionG = new ArrayList<Team>();
+    private static ArrayList<Team> singleADivisionH = new ArrayList<Team>();
+    private static ArrayList<Team> singleAConferenceA = new ArrayList<Team>();
+    private static ArrayList<Team> singleAConferenceB = new ArrayList<Team>();
+    private static ArrayList<Team> singleALeague = new ArrayList<Team>();
     private static PrintWriter majorChampionships, tripleAChampionships, doubleAChampionships, singleAChampionships;
    // @SuppressWarnings("static-access")
     public static void main(String[] args)
@@ -82,11 +82,11 @@ public class Controller
 		}
 
 
-		team majorLeagueTeam = new MajorLeagueTeam(teamName, i);
+		Team majorLeagueTeam = new MajorLeagueTeam(teamName, i);
 		create.addTeam(majorLeagueTeam);
 		String[] teamNames = teamGen.getRelatedName(teamGen.getRecentLocation(), teamGen.getRecentName(), teamGen.usedState());
 
-		team minorLeagueTeam = new MinorLeagueTeam((MajorLeagueTeam) majorLeagueTeam, teamNames[0], i < 16, i);
+		Team minorLeagueTeam = new MinorLeagueTeam((MajorLeagueTeam) majorLeagueTeam, teamNames[0], i < 16, i);
 		create.addTeam(minorLeagueTeam);
 		((MajorLeagueTeam) majorLeagueTeam).addFarmSystemTeam((MinorLeagueTeam)minorLeagueTeam);
 
@@ -124,7 +124,7 @@ public class Controller
 	{
 	    e1.printStackTrace();
 	}
-	for(int j = 0; j < 5; j++)
+	for(int j = 0; j < 1; j++)
 	{
 	    System.out.println(j);
 	    Schedule schedule = new Schedule();
@@ -188,13 +188,13 @@ public class Controller
     }
     private static void doAllPlayoffs()
     {
-	ArrayList<team> majorDivisionWinners = new ArrayList<team>();
+	ArrayList<Team> majorDivisionWinners = new ArrayList<Team>();
 	majorDivisionWinners.add(majorDivisionA.get(0));
 	majorDivisionWinners.add(majorDivisionB.get(0));
 	majorDivisionWinners.add(majorDivisionC.get(0));
 	majorDivisionWinners.add(majorDivisionD.get(0));
 
-	ArrayList<team> majorWildCard = new ArrayList<team>();
+	ArrayList<Team> majorWildCard = new ArrayList<Team>();
 	majorWildCard.add(majorDivisionA.get(1));
 	majorWildCard.add(majorDivisionB.get(1));
 	majorWildCard.add(majorDivisionC.get(1));
@@ -207,7 +207,7 @@ public class Controller
 	Collections.sort(majorDivisionWinners);
 	Collections.sort(majorWildCard);
 
-	team[] majorConferenceAPlayoffTeams = new team[6];
+	Team[] majorConferenceAPlayoffTeams = new Team[6];
 	majorConferenceAPlayoffTeams[0] = majorDivisionWinners.get(0);
 	majorConferenceAPlayoffTeams[1] = majorDivisionWinners.get(1);
 	majorConferenceAPlayoffTeams[2] = majorDivisionWinners.get(2);
@@ -215,13 +215,13 @@ public class Controller
 	majorConferenceAPlayoffTeams[4] = majorWildCard.get(0);
 	majorConferenceAPlayoffTeams[5] = majorWildCard.get(1);
 
-	majorDivisionWinners = new ArrayList<team>();
+	majorDivisionWinners = new ArrayList<Team>();
 	majorDivisionWinners.add(majorDivisionE.get(0));
 	majorDivisionWinners.add(majorDivisionF.get(0));
 	majorDivisionWinners.add(majorDivisionG.get(0));
 	majorDivisionWinners.add(majorDivisionH.get(0));
 
-	majorWildCard = new ArrayList<team>();
+	majorWildCard = new ArrayList<Team>();
 	majorWildCard.add(majorDivisionE.get(1));
 	majorWildCard.add(majorDivisionF.get(1));
 	majorWildCard.add(majorDivisionG.get(1));
@@ -234,7 +234,7 @@ public class Controller
 	Collections.sort(majorDivisionWinners);
 	Collections.sort(majorWildCard);
 
-	team[] majorConferenceBPlayoffTeams = new team[6];
+	Team[] majorConferenceBPlayoffTeams = new Team[6];
 	majorConferenceBPlayoffTeams[0] = majorDivisionWinners.get(0);
 	majorConferenceBPlayoffTeams[1] = majorDivisionWinners.get(1);
 	majorConferenceBPlayoffTeams[2] = majorDivisionWinners.get(2);
@@ -244,13 +244,13 @@ public class Controller
 
 	doPlayoffs(majorConferenceAPlayoffTeams, majorConferenceBPlayoffTeams, majorChampionships);
 
-	ArrayList<team> tripleADivisionWinners = new ArrayList<team>();
+	ArrayList<Team> tripleADivisionWinners = new ArrayList<Team>();
 	tripleADivisionWinners.add(tripleADivisionA.get(0));
 	tripleADivisionWinners.add(tripleADivisionB.get(0));
 	tripleADivisionWinners.add(tripleADivisionC.get(0));
 	tripleADivisionWinners.add(tripleADivisionD.get(0));
 
-	ArrayList<team> tripleAWildCard = new ArrayList<team>();
+	ArrayList<Team> tripleAWildCard = new ArrayList<Team>();
 	tripleAWildCard.add(tripleADivisionA.get(1));
 	tripleAWildCard.add(tripleADivisionB.get(1));
 	tripleAWildCard.add(tripleADivisionC.get(1));
@@ -263,7 +263,7 @@ public class Controller
 	Collections.sort(tripleADivisionWinners);
 	Collections.sort(tripleAWildCard);
 
-	team[] tripleAConferenceAPlayoffTeams = new team[6];
+	Team[] tripleAConferenceAPlayoffTeams = new Team[6];
 	tripleAConferenceAPlayoffTeams[0] = tripleADivisionWinners.get(0);
 	tripleAConferenceAPlayoffTeams[1] = tripleADivisionWinners.get(1);
 	tripleAConferenceAPlayoffTeams[2] = tripleADivisionWinners.get(2);
@@ -271,13 +271,13 @@ public class Controller
 	tripleAConferenceAPlayoffTeams[4] = tripleAWildCard.get(0);
 	tripleAConferenceAPlayoffTeams[5] = tripleAWildCard.get(1);
 
-	tripleADivisionWinners = new ArrayList<team>();
+	tripleADivisionWinners = new ArrayList<Team>();
 	tripleADivisionWinners.add(tripleADivisionE.get(0));
 	tripleADivisionWinners.add(tripleADivisionF.get(0));
 	tripleADivisionWinners.add(tripleADivisionG.get(0));
 	tripleADivisionWinners.add(tripleADivisionH.get(0));
 
-	tripleAWildCard = new ArrayList<team>();
+	tripleAWildCard = new ArrayList<Team>();
 	tripleAWildCard.add(tripleADivisionE.get(1));
 	tripleAWildCard.add(tripleADivisionF.get(1));
 	tripleAWildCard.add(tripleADivisionG.get(1));
@@ -290,7 +290,7 @@ public class Controller
 	Collections.sort(tripleADivisionWinners);
 	Collections.sort(tripleAWildCard);
 
-	team[] tripleAConferenceBPlayoffTeams = new team[6];
+	Team[] tripleAConferenceBPlayoffTeams = new Team[6];
 	tripleAConferenceBPlayoffTeams[0] = tripleADivisionWinners.get(0);
 	tripleAConferenceBPlayoffTeams[1] = tripleADivisionWinners.get(1);
 	tripleAConferenceBPlayoffTeams[2] = tripleADivisionWinners.get(2);
@@ -300,13 +300,13 @@ public class Controller
 
 	doPlayoffs(tripleAConferenceAPlayoffTeams, tripleAConferenceBPlayoffTeams, tripleAChampionships);
 
-	ArrayList<team> doubleADivisionWinners = new ArrayList<team>();
+	ArrayList<Team> doubleADivisionWinners = new ArrayList<Team>();
 	doubleADivisionWinners.add(doubleADivisionA.get(0));
 	doubleADivisionWinners.add(doubleADivisionB.get(0));
 	doubleADivisionWinners.add(doubleADivisionC.get(0));
 	doubleADivisionWinners.add(doubleADivisionD.get(0));
 
-	ArrayList<team> doubleAWildCard = new ArrayList<team>();
+	ArrayList<Team> doubleAWildCard = new ArrayList<Team>();
 	doubleAWildCard.add(doubleADivisionA.get(1));
 	doubleAWildCard.add(doubleADivisionB.get(1));
 	doubleAWildCard.add(doubleADivisionC.get(1));
@@ -319,7 +319,7 @@ public class Controller
 	Collections.sort(doubleADivisionWinners);
 	Collections.sort(doubleAWildCard);
 
-	team[] doubleAConferenceAPlayoffTeams = new team[6];
+	Team[] doubleAConferenceAPlayoffTeams = new Team[6];
 	doubleAConferenceAPlayoffTeams[0] = doubleADivisionWinners.get(0);
 	doubleAConferenceAPlayoffTeams[1] = doubleADivisionWinners.get(1);
 	doubleAConferenceAPlayoffTeams[2] = doubleADivisionWinners.get(2);
@@ -327,13 +327,13 @@ public class Controller
 	doubleAConferenceAPlayoffTeams[4] = doubleAWildCard.get(0);
 	doubleAConferenceAPlayoffTeams[5] = doubleAWildCard.get(1);
 
-	doubleADivisionWinners = new ArrayList<team>();
+	doubleADivisionWinners = new ArrayList<Team>();
 	doubleADivisionWinners.add(doubleADivisionE.get(0));
 	doubleADivisionWinners.add(doubleADivisionF.get(0));
 	doubleADivisionWinners.add(doubleADivisionG.get(0));
 	doubleADivisionWinners.add(doubleADivisionH.get(0));
 
-	doubleAWildCard = new ArrayList<team>();
+	doubleAWildCard = new ArrayList<Team>();
 	doubleAWildCard.add(doubleADivisionE.get(1));
 	doubleAWildCard.add(doubleADivisionF.get(1));
 	doubleAWildCard.add(doubleADivisionG.get(1));
@@ -346,7 +346,7 @@ public class Controller
 	Collections.sort(doubleADivisionWinners);
 	Collections.sort(doubleAWildCard);
 
-	team[] doubleAConferenceBPlayoffTeams = new team[6];
+	Team[] doubleAConferenceBPlayoffTeams = new Team[6];
 	doubleAConferenceBPlayoffTeams[0] = doubleADivisionWinners.get(0);
 	doubleAConferenceBPlayoffTeams[1] = doubleADivisionWinners.get(1);
 	doubleAConferenceBPlayoffTeams[2] = doubleADivisionWinners.get(2);
@@ -356,13 +356,13 @@ public class Controller
 
 	doPlayoffs(doubleAConferenceAPlayoffTeams, doubleAConferenceBPlayoffTeams, doubleAChampionships);
 
-	ArrayList<team> singleADivisionWinners = new ArrayList<team>();
+	ArrayList<Team> singleADivisionWinners = new ArrayList<Team>();
 	singleADivisionWinners.add(singleADivisionA.get(0));
 	singleADivisionWinners.add(singleADivisionB.get(0));
 	singleADivisionWinners.add(singleADivisionC.get(0));
 	singleADivisionWinners.add(singleADivisionD.get(0));
 
-	ArrayList<team> singleAWildCard = new ArrayList<team>();
+	ArrayList<Team> singleAWildCard = new ArrayList<Team>();
 	singleAWildCard.add(singleADivisionA.get(1));
 	singleAWildCard.add(singleADivisionB.get(1));
 	singleAWildCard.add(singleADivisionC.get(1));
@@ -375,7 +375,7 @@ public class Controller
 	Collections.sort(singleADivisionWinners);
 	Collections.sort(singleAWildCard);
 
-	team[] singleAConferenceAPlayoffTeams = new team[6];
+	Team[] singleAConferenceAPlayoffTeams = new Team[6];
 	singleAConferenceAPlayoffTeams[0] = singleADivisionWinners.get(0);
 	singleAConferenceAPlayoffTeams[1] = singleADivisionWinners.get(1);
 	singleAConferenceAPlayoffTeams[2] = singleADivisionWinners.get(2);
@@ -383,13 +383,13 @@ public class Controller
 	singleAConferenceAPlayoffTeams[4] = singleAWildCard.get(0);
 	singleAConferenceAPlayoffTeams[5] = singleAWildCard.get(1);
 
-	singleADivisionWinners = new ArrayList<team>();
+	singleADivisionWinners = new ArrayList<Team>();
 	singleADivisionWinners.add(singleADivisionE.get(0));
 	singleADivisionWinners.add(singleADivisionF.get(0));
 	singleADivisionWinners.add(singleADivisionG.get(0));
 	singleADivisionWinners.add(singleADivisionH.get(0));
 
-	singleAWildCard = new ArrayList<team>();
+	singleAWildCard = new ArrayList<Team>();
 	singleAWildCard.add(singleADivisionE.get(1));
 	singleAWildCard.add(singleADivisionF.get(1));
 	singleAWildCard.add(singleADivisionG.get(1));
@@ -402,7 +402,7 @@ public class Controller
 	Collections.sort(singleADivisionWinners);
 	Collections.sort(singleAWildCard);
 
-	team[] singleAConferenceBPlayoffTeams = new team[6];
+	Team[] singleAConferenceBPlayoffTeams = new Team[6];
 	singleAConferenceBPlayoffTeams[0] = singleADivisionWinners.get(0);
 	singleAConferenceBPlayoffTeams[1] = singleADivisionWinners.get(1);
 	singleAConferenceBPlayoffTeams[2] = singleADivisionWinners.get(2);
@@ -415,21 +415,21 @@ public class Controller
 
 
     }
-    private static void doPlayoffs(team[] firstConference, team[] secondConference, PrintWriter championships)
+    private static void doPlayoffs(Team[] firstConference, Team[] secondConference, PrintWriter championships)
     {
-	team firstOneWinner = doRound(firstConference[2],firstConference[5]).getWinner();
-	team firstTwoWinner = doRound(firstConference[3], firstConference[4]).getWinner();
+	Team firstOneWinner = doRound(firstConference[2],firstConference[5]).getWinner();
+	Team firstTwoWinner = doRound(firstConference[3], firstConference[4]).getWinner();
 
-	team secondOneWinner = doRound(secondConference[2],secondConference[5]).getWinner();
-	team secondTwoWinner = doRound(secondConference[3], secondConference[4]).getWinner();
+	Team secondOneWinner = doRound(secondConference[2],secondConference[5]).getWinner();
+	Team secondTwoWinner = doRound(secondConference[3], secondConference[4]).getWinner();
 
-	team firstThreeWinner = doRound(firstConference[1], firstOneWinner).getWinner();
-	team firstFourWinner = doRound(firstConference[0], firstTwoWinner).getWinner();
+	Team firstThreeWinner = doRound(firstConference[1], firstOneWinner).getWinner();
+	Team firstFourWinner = doRound(firstConference[0], firstTwoWinner).getWinner();
 
-	team secondThreeWinner = doRound(secondConference[1], secondOneWinner).getWinner();
-	team secondFourWinner = doRound(secondConference[0], secondTwoWinner).getWinner();
+	Team secondThreeWinner = doRound(secondConference[1], secondOneWinner).getWinner();
+	Team secondFourWinner = doRound(secondConference[0], secondTwoWinner).getWinner();
 
-	team firstFiveWinner, secondFiveWinner;
+	Team firstFiveWinner, secondFiveWinner;
 
 	if(firstThreeWinner.getLeagueRank() > firstFourWinner.getLeagueRank())firstFiveWinner = doRound(firstFourWinner, firstThreeWinner).getWinner();
 	else firstFiveWinner = doRound(firstThreeWinner, firstFourWinner).getWinner();
@@ -455,7 +455,7 @@ public class Controller
 
 	championshipWinner.getWinner().addChampionship();
     }
-    private static results doRound(team teamOne, team teamTwo)
+    private static results doRound(Team teamOne, Team teamTwo)
     {
 
 	int teamOneWins = 0, teamTwoWins = 0;
@@ -510,53 +510,53 @@ public class Controller
     {
 	PrintWriter majorStandings = new PrintWriter("majorStandings.csv"), tripleAStandings = new PrintWriter("tripleAStandings.csv"), doubleAStandings = new PrintWriter("doubleAStandings.csv"), singleAStandings = new PrintWriter("singleAStandings.csv");
 
-	majorDivisionA = new ArrayList<team>();
-	majorDivisionB = new ArrayList<team>();
-	majorDivisionC = new ArrayList<team>();
-	majorDivisionD = new ArrayList<team>();
-	majorDivisionE = new ArrayList<team>();
-	majorDivisionF = new ArrayList<team>();
-	majorDivisionG = new ArrayList<team>();
-	majorDivisionH = new ArrayList<team>();
-	majorConferenceA = new ArrayList<team>();
-	majorConferenceB = new ArrayList<team>();
-	majorLeague = new ArrayList<team>();
+	majorDivisionA = new ArrayList<Team>();
+	majorDivisionB = new ArrayList<Team>();
+	majorDivisionC = new ArrayList<Team>();
+	majorDivisionD = new ArrayList<Team>();
+	majorDivisionE = new ArrayList<Team>();
+	majorDivisionF = new ArrayList<Team>();
+	majorDivisionG = new ArrayList<Team>();
+	majorDivisionH = new ArrayList<Team>();
+	majorConferenceA = new ArrayList<Team>();
+	majorConferenceB = new ArrayList<Team>();
+	majorLeague = new ArrayList<Team>();
 
-	tripleADivisionA = new ArrayList<team>();
-	tripleADivisionB = new ArrayList<team>();
-	tripleADivisionC = new ArrayList<team>();
-	tripleADivisionD = new ArrayList<team>();
-	tripleADivisionE = new ArrayList<team>();
-	tripleADivisionF = new ArrayList<team>();
-	tripleADivisionG = new ArrayList<team>();
-	tripleADivisionH = new ArrayList<team>();
-	tripleAConferenceA = new ArrayList<team>();
-	tripleAConferenceB = new ArrayList<team>();
-	tripleALeague = new ArrayList<team>();
+	tripleADivisionA = new ArrayList<Team>();
+	tripleADivisionB = new ArrayList<Team>();
+	tripleADivisionC = new ArrayList<Team>();
+	tripleADivisionD = new ArrayList<Team>();
+	tripleADivisionE = new ArrayList<Team>();
+	tripleADivisionF = new ArrayList<Team>();
+	tripleADivisionG = new ArrayList<Team>();
+	tripleADivisionH = new ArrayList<Team>();
+	tripleAConferenceA = new ArrayList<Team>();
+	tripleAConferenceB = new ArrayList<Team>();
+	tripleALeague = new ArrayList<Team>();
 
-	doubleADivisionA = new ArrayList<team>();
-	doubleADivisionB = new ArrayList<team>();
-	doubleADivisionC = new ArrayList<team>();
-	doubleADivisionD = new ArrayList<team>();
-	doubleADivisionE = new ArrayList<team>();
-	doubleADivisionF = new ArrayList<team>();
-	doubleADivisionG = new ArrayList<team>();
-	doubleADivisionH = new ArrayList<team>();
-	doubleAConferenceA = new ArrayList<team>();
-	doubleAConferenceB = new ArrayList<team>();
-	doubleALeague = new ArrayList<team>();
+	doubleADivisionA = new ArrayList<Team>();
+	doubleADivisionB = new ArrayList<Team>();
+	doubleADivisionC = new ArrayList<Team>();
+	doubleADivisionD = new ArrayList<Team>();
+	doubleADivisionE = new ArrayList<Team>();
+	doubleADivisionF = new ArrayList<Team>();
+	doubleADivisionG = new ArrayList<Team>();
+	doubleADivisionH = new ArrayList<Team>();
+	doubleAConferenceA = new ArrayList<Team>();
+	doubleAConferenceB = new ArrayList<Team>();
+	doubleALeague = new ArrayList<Team>();
 
-	singleADivisionA = new ArrayList<team>();
-	singleADivisionB = new ArrayList<team>();
-	singleADivisionC = new ArrayList<team>();
-	singleADivisionD = new ArrayList<team>();
-	singleADivisionE = new ArrayList<team>();
-	singleADivisionF = new ArrayList<team>();
-	singleADivisionG = new ArrayList<team>();
-	singleADivisionH = new ArrayList<team>();
-	singleAConferenceA = new ArrayList<team>();
-	singleAConferenceB = new ArrayList<team>();
-	singleALeague = new ArrayList<team>();
+	singleADivisionA = new ArrayList<Team>();
+	singleADivisionB = new ArrayList<Team>();
+	singleADivisionC = new ArrayList<Team>();
+	singleADivisionD = new ArrayList<Team>();
+	singleADivisionE = new ArrayList<Team>();
+	singleADivisionF = new ArrayList<Team>();
+	singleADivisionG = new ArrayList<Team>();
+	singleADivisionH = new ArrayList<Team>();
+	singleAConferenceA = new ArrayList<Team>();
+	singleAConferenceB = new ArrayList<Team>();
+	singleALeague = new ArrayList<Team>();
 
 	for(int i = 0; i < 4; i++)
 	{
@@ -597,7 +597,7 @@ public class Controller
 	    singleADivisionH.add(create.getTeam(i+28,3));
 	}
 
-	ArrayList<ArrayList<team>> majorLeagueDivisions = new ArrayList<ArrayList<team>>();
+	ArrayList<ArrayList<Team>> majorLeagueDivisions = new ArrayList<ArrayList<Team>>();
 	majorLeagueDivisions.add(majorDivisionA);
 	majorLeagueDivisions.add(majorDivisionB);
 	majorLeagueDivisions.add(majorDivisionC);
@@ -607,7 +607,7 @@ public class Controller
 	majorLeagueDivisions.add(majorDivisionG);
 	majorLeagueDivisions.add(majorDivisionH);
 
-	ArrayList<ArrayList<team>> tripleALeagueDivisions = new ArrayList<ArrayList<team>>();
+	ArrayList<ArrayList<Team>> tripleALeagueDivisions = new ArrayList<ArrayList<Team>>();
 	tripleALeagueDivisions.add(tripleADivisionA);
 	tripleALeagueDivisions.add(tripleADivisionB);
 	tripleALeagueDivisions.add(tripleADivisionC);
@@ -617,7 +617,7 @@ public class Controller
 	tripleALeagueDivisions.add(tripleADivisionG);
 	tripleALeagueDivisions.add(tripleADivisionH);
 
-	ArrayList<ArrayList<team>> doubleALeagueDivisions = new ArrayList<ArrayList<team>>();
+	ArrayList<ArrayList<Team>> doubleALeagueDivisions = new ArrayList<ArrayList<Team>>();
 	doubleALeagueDivisions.add(doubleADivisionA);
 	doubleALeagueDivisions.add(doubleADivisionB);
 	doubleALeagueDivisions.add(doubleADivisionC);
@@ -627,7 +627,7 @@ public class Controller
 	doubleALeagueDivisions.add(doubleADivisionG);
 	doubleALeagueDivisions.add(doubleADivisionH);
 
-	ArrayList<ArrayList<team>> singleALeagueDivisions = new ArrayList<ArrayList<team>>();
+	ArrayList<ArrayList<Team>> singleALeagueDivisions = new ArrayList<ArrayList<Team>>();
 	singleALeagueDivisions.add(singleADivisionA);
 	singleALeagueDivisions.add(singleADivisionB);
 	singleALeagueDivisions.add(singleADivisionC);
@@ -754,26 +754,26 @@ public class Controller
 	doubleAStats.close();
 	singleAStats.close();
     }
-    private static void printStats(ArrayList<team> league, PrintWriter stats) throws IOException
+    private static void printStats(ArrayList<Team> league, PrintWriter stats) throws IOException
     {
 	// 0 is atBats, 1 is hits, 2 is doubles, 3 is triples, 4 is Home Runs, 5 is RBI's, 6 is Strikeouts, 7 is walks
-	for(team t:league)
+	for(Team t:league)
 	{
-	    stats.println(t + "'s Player Name,At Bats,Hits,Batting Average,Doubles,Triples,Home Runs,RBI's,Strikeouts,Walks,Innings Pitched,ERA,Earned Runs Allowed,Runs Allowed,Strikeouts,Walks,Wins,Losses");
+	    stats.println(t + "'s Player Name,At Bats,Hits,Batting Average,Doubles,Triples,Home Runs,RBI's,Strikeouts,Walks,Innings Pitched,ERA,Earned Runs Allowed,Runs Allowed,Strikeouts,Walks,Wins,Losses,Saves,Blown Saves");
 	    for(player p:t)
 	    {
 		stats.printf("%s,%d,%d,.%03.0f,%d,%d,%d,%d,%d,%d", p.getPositionAsString() + " " + p, p.getTotalAtBats(), p.getTotalHits(), p.getBattingAverage()*1000,p.getDoubles(),p.getTriples(),p.getHomeRuns(),p.getRBIs(),p.getStrikeOuts(),p.getWalks());
 		if(p instanceof pitcher)
 		{
 		    pitcher pitch = (pitcher)p;
-		    stats.printf(",%s,%01.2f,%d,%d,%d,%d,%d,%d\n", pitch.getInnings(),pitch.getERAAsDouble(),pitch.getEarnedRuns(),pitch.getRunsAllowed(),pitch.getStrikeOutsPitched(),pitch.getWalksGiven(), pitch.getWins(), pitch.getLosses());
+		    stats.printf(",%s,%01.2f,%d,%d,%d,%d,%d,%d,%d,%d\n", pitch.getInnings(),pitch.getERAAsDouble(),pitch.getEarnedRuns(),pitch.getRunsAllowed(),pitch.getStrikeOutsPitched(),pitch.getWalksGiven(), pitch.getWins(), pitch.getLosses(),pitch.getSaves(),pitch.getBlownSaves());
 		}
 		else stats.println();
 	    }
 	}
 
     }
-    private static void printTeamInfo(PrintWriter majorStandings, team team) throws IOException
+    private static void printTeamInfo(PrintWriter majorStandings, Team team) throws IOException
     {
 	majorStandings.println(team + "," + team.getWins() +  "," + team.getLosses() + "," + team.getRunsScored() + "," + team.getRunsAgainst() + "," + team.getDivisionRank() + "," + team.getConferenceRank() + "," + team.getLeagueRank());
 

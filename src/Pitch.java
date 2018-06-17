@@ -127,13 +127,13 @@ public class Pitch
 		    if(hitType > 35)
 		    {
 			double groundBallProbability = (pitcherRatings.getGroundBallPercentage()+batterRatings.getGroundballPercent())/2;
-			if(r.nextInt(100) > groundBallProbability)return pitchResult.STRONG_FLYBALL;
+			if(r.nextInt(100)-5 > groundBallProbability)return pitchResult.STRONG_FLYBALL;
 			return pitchResult.STRONG_GROUNDBALL;
 		    }
 		    else if(hitType > 18.5)
 		    {
 			double groundBallProbability = (pitcherRatings.getGroundBallPercentage()+batterRatings.getGroundballPercent())/2;
-			if(r.nextInt(100) > groundBallProbability)return pitchResult.FLYBALL;
+			if(r.nextInt(100)-5 > groundBallProbability)return pitchResult.FLYBALL;
 			return pitchResult.GROUNDBALL;
 		    }
 		    else

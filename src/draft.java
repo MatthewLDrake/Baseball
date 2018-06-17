@@ -5,7 +5,7 @@ public class draft
 	private int totalRounds;
 	private ArrayList<player> rookies;
 	private ArrayList<rookieHolder> teams;
-	public draft(int rounds, ArrayList<team> teams, ArrayList<player> players, boolean firstDraft)
+	public draft(int rounds, ArrayList<Team> teams, ArrayList<player> players, boolean firstDraft)
 	{
 		totalRounds = rounds;
 		this.teams = new ArrayList<rookieHolder>();
@@ -20,7 +20,6 @@ public class draft
 		for(int i = 0; i < teams.size(); i++)
 		{
 			this.teams.get(i).distributePlayers();
-			System.out.println(this.teams.get(i).size());
 		}
 	}
 	private void executeDraft()
