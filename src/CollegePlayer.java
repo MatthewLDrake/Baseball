@@ -17,8 +17,10 @@ public class CollegePlayer implements player
 	// 1 is freshman, 2 is sophomore, 3 is junior and 4 is senior
 	private int age, year;
 	private boolean isRedShirt;
-	public CollegePlayer(String name,HashMap<pitchType, batterPitchRatings> pitchStats, double speedRating, double fieldingRating, double throwPower, double throwAccuracy, double staminaRating, int pos, ArrayList<Integer> secondaryPositions, int age, int year, boolean redShirt)
+	private CollegeTeam college;
+	public CollegePlayer(String name,HashMap<pitchType, batterPitchRatings> pitchStats, double speedRating, double fieldingRating, double throwPower, double throwAccuracy, double staminaRating, int pos, ArrayList<Integer> secondaryPositions, int age, int year, boolean redShirt, CollegeTeam college)
 	{
+		this.college = college;
 		isRedShirt = false;
 		this.age = age;
 		this.year = year;
@@ -556,10 +558,24 @@ public class CollegePlayer implements player
 		}
 		age++;
 	}
-	public boolean didGraduate()
+	public void progress()
 	{
 		
+	}
+	public boolean didGraduate()
+	{
 		return year > 4;
+	}
+	
+	public boolean goPro()
+	{
+		double overall = getOverall(-1);
+		if(overall > 70)return true;
+		if(overall < 30) return false;
+		
+		
+		
+		return false;
 	}
 
 }

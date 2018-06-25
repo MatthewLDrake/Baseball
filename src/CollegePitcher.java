@@ -7,9 +7,9 @@ public class CollegePitcher extends CollegePlayer implements pitcher
     private int[] stats, careerStats;
     private int runsInCurrentGame;
     private boolean pitched;
-    public CollegePitcher(HashMap<pitchType, pitcherPitchRatings> pitches, String name,HashMap<pitchType, batterPitchRatings> battingRatings, double speedRating, double fieldingRating, double throwPower, double throwAccuracy, double staminaRating, int pos, int age, int year, boolean redShirt)
+    public CollegePitcher(HashMap<pitchType, pitcherPitchRatings> pitches, String name,HashMap<pitchType, batterPitchRatings> battingRatings, double speedRating, double fieldingRating, double throwPower, double throwAccuracy, double staminaRating, int pos, int age, int year, boolean redShirt, CollegeTeam college)
     {
-	super(name,battingRatings, speedRating, fieldingRating, throwPower, throwAccuracy, staminaRating, pos, null, age, year, redShirt);
+	super(name,battingRatings, speedRating, fieldingRating, throwPower, throwAccuracy, staminaRating, pos, null, age, year, redShirt, college);
 	this.pitches = pitches;
 	staminaRemaining = 100;
 	this.staminaRating = staminaRating;

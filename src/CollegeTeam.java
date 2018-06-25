@@ -19,9 +19,28 @@ public class CollegeTeam extends Team
 	}
 	
 	public ArrayList<player> getProPlayers()
-	{
-		//TODO: Also graduate people
-		return null;
+	{		
+		ArrayList<player> retVal = new ArrayList<player>();
+		ArrayList<player> returningPlayers = new ArrayList<player>();
+		for(int i = 0; i < players.size();i++)
+		{
+			CollegePlayer current = (CollegePlayer)players.get(i);
+			boolean flag = false;
+			if(current.goPro())
+			{
+				retVal.add(players.get(i));
+				flag = true;
+			}
+			
+			if(!flag && !current.didGraduate())
+			{
+				returningPlayers.add(players.get(i));
+			}
+			
+		}
+		players = returningPlayers;
+		
+		return retVal;
 	}
 	/*
 	 * 0-4 Starting Pitchers
@@ -41,102 +60,102 @@ public class CollegeTeam extends Team
 	{
 		if(!positionsFilled[0])
 		{
-			pitcher addedPlayer = gen.generateStartingPitcher(getType(), firstTime);
+			pitcher addedPlayer = gen.generateStartingPitcher(getType(), firstTime, this);
 			addStartingPitcher(addedPlayer);
 		}
 		if(!positionsFilled[1])
 		{
-			pitcher addedPlayer = gen.generateStartingPitcher(getType(), firstTime);
+			pitcher addedPlayer = gen.generateStartingPitcher(getType(), firstTime, this);
 			addStartingPitcher(addedPlayer);
 		}
 		if(!positionsFilled[2])
 		{
-			pitcher addedPlayer = gen.generateStartingPitcher(getType(), firstTime);
+			pitcher addedPlayer = gen.generateStartingPitcher(getType(), firstTime, this);
 			addStartingPitcher(addedPlayer);
 		}
 		if(!positionsFilled[3])
 		{
-			pitcher addedPlayer = gen.generateStartingPitcher(getType(), firstTime);
+			pitcher addedPlayer = gen.generateStartingPitcher(getType(), firstTime, this);
 			addStartingPitcher(addedPlayer);
 		}
 		if(!positionsFilled[4])
 		{
-			pitcher addedPlayer = gen.generateStartingPitcher(getType(), firstTime);
+			pitcher addedPlayer = gen.generateStartingPitcher(getType(), firstTime, this);
 			addStartingPitcher(addedPlayer);
 		}
 		if(!positionsFilled[5])
 		{
-			pitcher addedPlayer = gen.generateStartingPitcher(getType(), firstTime);
+			pitcher addedPlayer = gen.generateStartingPitcher(getType(), firstTime, this);
 			addStartingPitcher(addedPlayer);
 		}
 		if(!positionsFilled[6])
 		{
-			pitcher addedPlayer = gen.generateReliefPitcher(getType(), firstTime);
+			pitcher addedPlayer = gen.generateReliefPitcher(getType(), firstTime, this);
 			addReliefPitcher(addedPlayer);
 		}
 		if(!positionsFilled[7])
 		{
-			pitcher addedPlayer = gen.generateReliefPitcher(getType(), firstTime);
+			pitcher addedPlayer = gen.generateReliefPitcher(getType(), firstTime, this);
 			addReliefPitcher(addedPlayer);
 		}
 		if(!positionsFilled[8])
 		{
-			pitcher addedPlayer = gen.generateReliefPitcher(getType(), firstTime);
+			pitcher addedPlayer = gen.generateReliefPitcher(getType(), firstTime, this);
 			addReliefPitcher(addedPlayer);
 		}
 		if(!positionsFilled[9])
 		{
-			pitcher addedPlayer = gen.generateReliefPitcher(getType(), firstTime);
+			pitcher addedPlayer = gen.generateReliefPitcher(getType(), firstTime, this);
 			addReliefPitcher(addedPlayer);
 		}
 		if(!positionsFilled[10])
 		{
-			pitcher addedPlayer = gen.generateReliefPitcher(getType(), firstTime);
+			pitcher addedPlayer = gen.generateReliefPitcher(getType(), firstTime, this);
 			addReliefPitcher(addedPlayer);
 		}
 		if(!positionsFilled[11])
 		{
-			pitcher addedPlayer = gen.generateReliefPitcher(getType(), firstTime);
+			pitcher addedPlayer = gen.generateReliefPitcher(getType(), firstTime, this);
 			addReliefPitcher(addedPlayer);
 		}
 		if(!positionsFilled[12])
 		{
-			player addedPlayer = gen.generateFirstBase(getType(), firstTime);
+			player addedPlayer = gen.generateFirstBase(getType(), firstTime, this);
 			addPlayer(addedPlayer);
 		}
 		if(!positionsFilled[13])
 		{
-			player addedPlayer = gen.generateSecondBase(getType(), firstTime);
+			player addedPlayer = gen.generateSecondBase(getType(), firstTime, this);
 			addPlayer(addedPlayer);
 		}
 		if(!positionsFilled[14])
 		{
-			player addedPlayer = gen.generateThirdBase(getType(), firstTime);
+			player addedPlayer = gen.generateThirdBase(getType(), firstTime, this);
 			addPlayer(addedPlayer);
 		}
 		if(!positionsFilled[15])
 		{
-			player addedPlayer = gen.generateShortStop(getType(), firstTime);
+			player addedPlayer = gen.generateShortStop(getType(), firstTime, this);
 			addPlayer(addedPlayer);
 		}
 		if(!positionsFilled[16])
 		{
-			player addedPlayer = gen.generateLeftFielder(getType(), firstTime);
+			player addedPlayer = gen.generateLeftFielder(getType(), firstTime, this);
 			addPlayer(addedPlayer);
 		}
 		if(!positionsFilled[17])
 		{
-			player addedPlayer = gen.generateRightFielder(getType(), firstTime);
+			player addedPlayer = gen.generateRightFielder(getType(), firstTime, this);
 			addPlayer(addedPlayer);
 		}
 		if(!positionsFilled[18])
 		{
-			player addedPlayer = gen.generateCenterFielder(getType(), firstTime);
+			player addedPlayer = gen.generateCenterFielder(getType(), firstTime, this);
 			addPlayer(addedPlayer);
 		}
 		if(!positionsFilled[19] || !positionsFilled[20])
 		{
-			player addedPlayer = gen.generateCatcher(getType(), firstTime);
+			player addedPlayer = gen.generateCatcher(getType(), firstTime, this);
 			addPlayer(addedPlayer);
 		}
 		if(!positionsFilled[21])
@@ -144,11 +163,11 @@ public class CollegeTeam extends Team
 			player addedPlayer = null;
 			if(r.nextBoolean())
 			{
-				addedPlayer = gen.generateFirstBase(getType(), firstTime);
+				addedPlayer = gen.generateFirstBase(getType(), firstTime, this);
 			}
 			else
 			{
-				addedPlayer = gen.generateThirdBase(getType(), firstTime);
+				addedPlayer = gen.generateThirdBase(getType(), firstTime, this);
 			}
 			addPlayer(addedPlayer);
 		}
@@ -157,11 +176,11 @@ public class CollegeTeam extends Team
 			player addedPlayer = null;
 			if(r.nextBoolean())
 			{
-				addedPlayer = gen.generateFirstBase(getType(), firstTime);
+				addedPlayer = gen.generateFirstBase(getType(), firstTime, this);
 			}
 			else
 			{
-				addedPlayer = gen.generateShortStop(getType(), firstTime);
+				addedPlayer = gen.generateShortStop(getType(), firstTime, this);
 			}
 			addPlayer(addedPlayer);
 		}
@@ -171,15 +190,15 @@ public class CollegeTeam extends Team
 			int i = r.nextInt(3);
 			if(i == 0)
 			{
-				addedPlayer = gen.generateFirstBase(getType(), firstTime);
+				addedPlayer = gen.generateFirstBase(getType(), firstTime, this);
 			}
 			else if(i == 1)
 			{
-				addedPlayer = gen.generateThirdBase(getType(), firstTime);
+				addedPlayer = gen.generateThirdBase(getType(), firstTime, this);
 			}
 			else
 			{
-				addedPlayer = gen.generateCenterFielder(getType(), firstTime);
+				addedPlayer = gen.generateCenterFielder(getType(), firstTime, this);
 			}
 			addPlayer(addedPlayer);
 		}
@@ -189,35 +208,35 @@ public class CollegeTeam extends Team
 			int pos = r.nextInt(8);
 			if(pos == 0)
 			{
-				addedPlayer = gen.generateFirstBase(getType(), firstTime);
+				addedPlayer = gen.generateFirstBase(getType(), firstTime, this);
 			}
 			else if(pos ==1)
 			{
-				addedPlayer = gen.generateSecondBase(getType(), firstTime);
+				addedPlayer = gen.generateSecondBase(getType(), firstTime, this);
 			}
 			else if(pos == 2)
 			{
-				addedPlayer = gen.generateThirdBase(getType(), firstTime);
+				addedPlayer = gen.generateThirdBase(getType(), firstTime, this);
 			}
 			else if(pos == 3)
 			{
-				addedPlayer = gen.generateShortStop(getType(), firstTime);
+				addedPlayer = gen.generateShortStop(getType(), firstTime, this);
 			}
 			else if(pos == 4)
 			{
-				addedPlayer = gen.generateLeftFielder(getType(), firstTime);
+				addedPlayer = gen.generateLeftFielder(getType(), firstTime, this);
 			}
 			else if(pos == 5)
 			{
-				addedPlayer = gen.generateRightFielder(getType(), firstTime);
+				addedPlayer = gen.generateRightFielder(getType(), firstTime, this);
 			}
 			else if(pos == 6)
 			{
-				addedPlayer = gen.generateCenterFielder(getType(), firstTime);
+				addedPlayer = gen.generateCenterFielder(getType(), firstTime, this);
 			}
 			else if(pos == 7)
 			{
-				addedPlayer = gen.generateCatcher(getType(), firstTime);
+				addedPlayer = gen.generateCatcher(getType(), firstTime, this);
 			}
 			addPlayer(addedPlayer);
 		}
@@ -234,6 +253,7 @@ public class CollegeTeam extends Team
 		{
 			CollegePlayer current = (CollegePlayer)players.get(i);
 			current.advanceYear();
+			current.progress();
 		}
 	}
 
