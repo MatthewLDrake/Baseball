@@ -228,6 +228,14 @@ public class CollegeTeam extends Team
 		return rank.getResult(r.nextInt(rank.sum()));
 		
 	}
+	public void advanceYear()
+	{
+		for(int i = 0; i < players.size();i++)
+		{
+			CollegePlayer current = (CollegePlayer)players.get(i);
+			current.advanceYear();
+		}
+	}
 
 
 }

@@ -231,6 +231,13 @@ public class College
 		{
 
 		}
+		for(int i = 0; i < conferences.size(); i++)
+		{
+			for(int j = 0; j < conferences.get(i).size();j++)
+			{
+				conferences.get(i).get(j).advanceYear();
+			}
+		}
 
 	}
 	private void printCollegeStandings() throws Exception

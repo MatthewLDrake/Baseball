@@ -14,6 +14,7 @@ public class CollegePlayer implements player
 	private String name;
 	private double staminaRemaining;
 	private boolean redShirt;
+	// 1 is freshman, 2 is sophomore, 3 is junior and 4 is senior
 	private int age, year;
 	private boolean isRedShirt;
 	public CollegePlayer(String name,HashMap<pitchType, batterPitchRatings> pitchStats, double speedRating, double fieldingRating, double throwPower, double throwAccuracy, double staminaRating, int pos, ArrayList<Integer> secondaryPositions, int age, int year, boolean redShirt)
@@ -44,9 +45,16 @@ public class CollegePlayer implements player
 		this.secondaryPositions = secondaryPositions;
 		overall = 50;
 	}
-	public void setRedShirt()
+	public boolean setRedShirt()
 	{
-		isRedShirt = true;
+		if(!redShirt)
+		{
+			isRedShirt = true;
+			redShirt = true;
+			return true;
+		}
+		return false;
+		
 	}
 	public void addRBI()
 	{
@@ -535,6 +543,23 @@ public class CollegePlayer implements player
 	{
 		// TODO: This
 
+	}
+	public void advanceYear()
+	{
+		if(isRedShirt)
+		{
+			isRedShirt = false;
+		}
+		else
+		{
+			year++;
+		}
+		age++;
+	}
+	public boolean didGraduate()
+	{
+		
+		return year > 4;
 	}
 
 }

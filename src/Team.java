@@ -11,26 +11,26 @@ public class Team implements Comparable<Team>, Iterable<player>, Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ArrayList<player> players;
-	private boolean hasDH;
-	private String teamName;
-	private int conferenceChampionships, championships;
-	private int teamNum;
-	private int wins, divisionWins, conferenceWins;
-	private int losses, divisionLosses, conferenceLosses;
-	private int runs, runsAgainst;
-	private pitcher[] pitchingRotation;
-	private player[] battingOrder;
-	private int placeInRotation;
-	private player startingCatcher, startingFirstBase, startingSecondBase, startingThirdBase, startingShortStop, startingLeftFielder, startingRightFielder, startingCenterFielder, DH;
-	private pitcher spotStarter, closer, setup, reliever;
-	private pitcher[] middleRelievers;
-	private int divisionRank, conferenceRank, leagueRank;
-	private Random r;
-	private ArrayList<player> backups;
-	private int dynastyWins, dynastyLosses;
-	private int currentLeague;
-	private PrintWriter teamHistory;
+	protected ArrayList<player> players;
+	protected boolean hasDH;
+	protected String teamName;
+	protected int conferenceChampionships, championships;
+	protected int teamNum;
+	protected int wins, divisionWins, conferenceWins;
+	protected int losses, divisionLosses, conferenceLosses;
+	protected int runs, runsAgainst;
+	protected pitcher[] pitchingRotation;
+	protected player[] battingOrder;
+	protected int placeInRotation;
+	protected player startingCatcher, startingFirstBase, startingSecondBase, startingThirdBase, startingShortStop, startingLeftFielder, startingRightFielder, startingCenterFielder, DH;
+	protected pitcher spotStarter, closer, setup, reliever;
+	protected pitcher[] middleRelievers;
+	protected int divisionRank, conferenceRank, leagueRank;
+	protected Random r;
+	protected ArrayList<player> backups;
+	protected int dynastyWins, dynastyLosses;
+	protected int currentLeague;
+	protected PrintWriter teamHistory;
 	/*
 	 * 0-4 Starting Pitchers
 	 * 5 Spot Starter
